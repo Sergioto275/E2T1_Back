@@ -1,0 +1,43 @@
+# Erabiliko dugun bertsioa
+# 3. bertsioa da erabiliena eta gomendagarriena
+version: '3'
+
+# Beharko ditugun zerbitzuen konfigurazioa
+services: 
+
+  apache:
+    container_name: apache
+    build: web/
+    ports:
+      - 80:80
+    volumes:
+      - ../../:/var/www/html
+ 
+  # mysql da lehen zerbitzu edo edukiontziari emango diogun izena
+  # Izen hori erabili beharko dugu erreferentzia egin nahi diogunean
+  mysql:
+    # Sortzen ari garen Docker edukiontziari izen ezagun bat eman nahi badiogu, horrela egingo dugu:
+    container_name: mysql
+    # Dockerfile fitxategi bat dugu mysql karpetan irudi bat sortzeko, BBDD MYSQL_DATABASE datubasean exekutatu nahi ditugun script-ekin 
+    build: mysql/
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: talde1
+      MYSQL_PASSWORD: ikasle123
+      MYSQL_DATABASE: 3wag2e2
+    # volumes:
+ #       - ./bbdd/:/var/lib/mysql/
+
+  # phpMyAdmin irudi ofiziala erabiltzen dugu
+  # Edukiontziko 80. ataka 8080. atakara birbideratzen dugu, Apache-rekin gatazkan sar ez dadin
+  # Beharrezko aldagaiak konfiguratzen ditugu mysql zerbitzariarekin konekta daiten
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      # Proiektuko mysql zerbitzuarekin konektatzen du zuzenean
+      PMA_HOST: mysql

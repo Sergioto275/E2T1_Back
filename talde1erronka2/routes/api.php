@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ControladorLangile;
+use App\Http\Controllers\ControladorOrdutegia;
+
 use App\Models\Langile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,5 +27,11 @@ Route::post("/langileaksortu","App\Http\Controllers\ControladorLangile@insert");
 Route::put("/langileakeguneratu","App\Http\Controllers\ControladorLangile@update");
 Route::get('/langileaklortubyid/{id}', [ControladorLangile::class, 'erakutzibyid']);
 Route::put("/langileakdelete","App\Http\Controllers\ControladorLangile@delete");
+
+Route::get("/ordutegiaklortu","App\Http\Controllers\ControladorOrdutegia@erakutzi");
+Route::post("/ordutegiaksortu","App\Http\Controllers\ControladorOrdutegia@insert");
+Route::put("/ordutegiakeguneratu","App\Http\Controllers\ControladorOrdutegia@update");
+Route::get('/ordutegiakortubyid/{id}', [ControladorOrdutegia::class, 'erakutzibyid']);
+Route::put("/ordutegiakdelete","App\Http\Controllers\ControladorOrdutegia@delete");
 
 

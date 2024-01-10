@@ -5,13 +5,25 @@ version: '3'
 # Beharko ditugun zerbitzuen konfigurazioa
 services: 
 
-  apache:
-    container_name: apache
+  apache-front:
+    container_name: apache-front
     build: web/
     ports:
       - 80:80
+      - 443:443
     volumes:
-      - ../../:/var/www/html
+      - ../../Front:/var/www/html
+
+  apache-back:
+    container_name: apache-back
+    build:
+      context: /web
+      dockerfile: DockerFileApacheBack
+    ports:
+      - 8081:80
+      - 8443:443
+    volumes:
+      - ../talde1erronka2:/var/www/html
  
   # mysql da lehen zerbitzu edo edukiontziari emango diogun izena
   # Izen hori erabili beharko dugu erreferentzia egin nahi diogunean

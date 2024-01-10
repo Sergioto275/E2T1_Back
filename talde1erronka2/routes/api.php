@@ -33,5 +33,6 @@ Route::post("/ordutegiaksortu","App\Http\Controllers\ControladorOrdutegia@insert
 Route::put("/ordutegiakeguneratu","App\Http\Controllers\ControladorOrdutegia@update");
 Route::get('/ordutegiakortubyid/{id}', [ControladorOrdutegia::class, 'erakutzibyid']);
 Route::put("/ordutegiakdelete","App\Http\Controllers\ControladorOrdutegia@delete");
+Route::get("/txandaklortu","App\Http\Controllers\\txanda_controller@txandak_kargatu");
 
 

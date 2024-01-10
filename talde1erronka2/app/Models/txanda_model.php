@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tareas extends Model
+class txanda_model extends Model
 {
-    protected $table = 'langilea';
+    // use HasFactory;
+    protected $table = 'txanda';
+    public $timestamps = false;
 }

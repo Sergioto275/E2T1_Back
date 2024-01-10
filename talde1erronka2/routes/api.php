@@ -24,6 +24,6 @@ Route::get("/langileaklortu","App\Http\Controllers\ControladorLangile@erakutzi")
 Route::post("/langileaksortu","App\Http\Controllers\ControladorLangile@insert");
 Route::put("/langileakeguneratu","App\Http\Controllers\ControladorLangile@update");
 Route::get('/langileaklortubyid/{id}', [ControladorLangile::class, 'erakutzibyid']);
-Route::delete('/langileakdelete/{id}', [ControladorLangile::class, 'delete']);
+Route::put("/langileakdelete","App\Http\Controllers\ControladorLangile@delete");
 
 

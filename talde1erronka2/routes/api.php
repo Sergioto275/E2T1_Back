@@ -37,8 +37,8 @@ Route::put("/ordutegiakdelete","App\Http\Controllers\ControladorOrdutegia@delete
 Route::get("/taldeaklortu","App\Http\Controllers\\talde_controller@taldeak_kargatu");
 Route::get("/taldeaklortubycode/{kodea}","App\Http\Controllers\\talde_controller@taldeak_kargatu_byid");
 Route::post("/taldeaksortu","App\Http\Controllers\\talde_controller@taldea_insert");
-Route::post("/taldeakeguneratu","App\Http\Controllers\\talde_controller@taldea_update");
-Route::post("/taldeakdelete","App\Http\Controllers\\talde_controller@taldea_delete");
+Route::put("/taldeakeguneratu","App\Http\Controllers\\talde_controller@taldea_update");
+Route::put("/taldeakdelete","App\Http\Controllers\\talde_controller@taldea_delete");
 
 
 

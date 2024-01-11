@@ -24,7 +24,7 @@ class ControladorLangile extends Controller
 
     public function insert(Request $request){
             $datos=$request->all();
-            $data=["izena"=>$datos[0],"abizenak"=>$datos[1],"kodea"=>$datos[2],"sortze_data"=>$datos[3]];
+            $data=["izena"=>$datos["izena"],"abizenak"=>$datos["abizenak"],"kodea"=>$datos["kodea"],"sortze_data"=>$datos["sortze_data"]];
             Langile::insert($data);
            // return "Se ha insertado";
     }
@@ -32,11 +32,11 @@ class ControladorLangile extends Controller
     public function update(Request $request){
         
         $datos=$request->all();
-        $belajar = Langile::find($datos[0]);
+        $belajar = Langile::find($datos['id']);
         if(!$belajar){
             return response()->json(['errors' => "No existe",], 404);
         }else{
-            Langile::where('id', $datos[0])->update(array('izena' =>$datos[1],'abizenak' =>$datos[2],'kodea' =>$datos[3],'eguneratze_data' =>$datos[4]));
+            Langile::where('id', $datos['id'])->update(array('izena'=>$datos['izena'],'abizenak'=>$datos['abizenak'],'kodea'=>$datos['kodea'],'eguneratze_data'=>$datos['eguneratze_data']));
         }
     }
 
@@ -46,7 +46,7 @@ class ControladorLangile extends Controller
         if(!$belajar){
             return response()->json(['errors' => "No existe",], 404);
         }else{
-            Langile::where('id', $datos[0])->update(array('izena' =>$datos[1],'abizenak' =>$datos[2],'kodea' =>$datos[3],'ezabatze_data' =>$datos[4]));
+            Langile::where('id', $datos['id'])->update(array('ezabatze_data'=>$datos['ezabatze_data']));
         }
     }
 }

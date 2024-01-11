@@ -23,10 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("/langileak","App\Http\Controllers\ControladorLangile@erakutzi");
+Route::get('/langileak/{id}', [ControladorLangile::class, 'erakutzibyid']);
 Route::post("/langileak","App\Http\Controllers\ControladorLangile@insert");
 Route::put("/langileak","App\Http\Controllers\ControladorLangile@update");
-Route::get('/langileakbyid/{id}', [ControladorLangile::class, 'erakutzibyid']);
-Route::delete("/langileakdelete","App\Http\Controllers\ControladorLangile@delete");
+Route::delete("/langileak","App\Http\Controllers\ControladorLangile@delete");
 
 Route::get("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@erakutzi");
 Route::post("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@insert");

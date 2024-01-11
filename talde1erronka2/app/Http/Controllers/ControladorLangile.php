@@ -9,14 +9,13 @@ class ControladorLangile extends Controller
 {
     public function erakutzi(){
         $belajar = Langile::all();
-        $json= json_encode($belajar);
-        return $json;
+        return response() -> json($belajar, 200);
     }
 
     public function erakutzibyid($id){
-        $belajar = Langile::where('id',$id)->get();
+        $belajar = Langile::find($id);
         if(!$belajar){
-            return response()->json(['errors' => "No existe",], 404);
+            return response()->json(['Errorea' => "Ez dago emaitzik id horrekin",], 404);
         }else{
             return response()->json($belajar);
         }   
@@ -26,27 +25,29 @@ class ControladorLangile extends Controller
             $datos=$request->all();
             $data=["izena"=>$datos["izena"],"abizenak"=>$datos["abizenak"],"kodea"=>$datos["kodea"],"sortze_data"=>$datos["sortze_data"]];
             Langile::insert($data);
-           // return "Se ha insertado";
+            return response('', 201);
     }
 
     public function update(Request $request){
-        
         $datos=$request->all();
         $belajar = Langile::find($datos['id']);
         if(!$belajar){
             return response()->json(['errors' => "No existe",], 404);
         }else{
             Langile::where('id', $datos['id'])->update(array('izena'=>$datos['izena'],'abizenak'=>$datos['abizenak'],'kodea'=>$datos['kodea'],'eguneratze_data'=>$datos['eguneratze_data']));
+            return response('', 202);
         }
+
     }
 
     public function delete(Request $request){
         $datos=$request->all();
-        $belajar = Langile::find($datos[0]);
+        $belajar = Langile::find($datos['id']);
         if(!$belajar){
             return response()->json(['errors' => "No existe",], 404);
         }else{
             Langile::where('id', $datos['id'])->update(array('ezabatze_data'=>$datos['ezabatze_data']));
+            return response('', 200);
         }
     }
 }

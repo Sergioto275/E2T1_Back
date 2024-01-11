@@ -8,7 +8,7 @@ RUN docker-php-ext-install mysqli && \
     HASH=`curl -sS https://composer.github.io/installer.sig` && \
     php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
     a2enmod rewrite && \
-    chmod -R 777 /var/www/html
+    chmod -R 755 .
 
 COPY apache2.conf /etc/apache2/
 

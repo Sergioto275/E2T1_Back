@@ -24,7 +24,7 @@ class ControladorOrdutegia extends Controller
 
     public function insert(Request $request){
             $datos=$request->all();
-            $data=["kodea"=>$datos[0],"eguna"=>$datos[1],"hasiera_data"=>$datos[2],"amaiera_data"=>$datos[3],"hasiera_ordua"=>$datos[4],"amaiera_ordua"=>$datos[5]];
+            $data=["kodea"=>$datos["kodea"],"eguna"=>$datos["eguna"],"hasiera_data"=>$datos["hasiera_data"],"amaiera_data"=>$datos["amaiera_data"],"hasiera_ordua"=>$datos["hasiera_ordua"],"amaiera_ordua"=>$datos["amaiera_ordua"]];
             Ordutegia::insert($data);
            // return "Se ha insertado";
     }
@@ -36,17 +36,17 @@ class ControladorOrdutegia extends Controller
         if(!$belajar){
             return response()->json(['errors' => "No existe",], 404);
         }else{
-            Ordutegia::where('id', $datos[0])->update(array('kodea' =>$datos[1],'eguna' =>$datos[2],'hasiera_data' =>$datos[3],'amaiera_data' =>$datos[4],'hasiera_ordua' =>$datos[5],'amaiera_ordua' =>$datos[6],'eguneratze_data' =>$datos[7]));
+            Ordutegia::where('id', $datos['id'])->update(array('kodea' =>$datos['kodea'],'eguna' =>$datos['eguna'],'hasiera_data' =>$datos['hasiera_data'],'amaiera_data' =>$datos['amaiera_data'],'hasiera_ordua' =>$datos['hasiera_ordua' ],'amaiera_ordua' =>$datos['amaiera_ordua'],'eguneratze_data' =>$datos['ezabatze_data']));
         }
     }
 
     public function delete(Request $request){
         $datos=$request->all();
-        $belajar = Ordutegia::find($datos[0]);
+        $belajar = Ordutegia::find($datos['id']);
         if(!$belajar){
             return response()->json(['errors' => "No existe",], 404);
         }else{
-            Ordutegia::where('id', $datos[0])->update(array('kodea' =>$datos[1],'eguna' =>$datos[2],'hasiera_data' =>$datos[3],'amaiera_data' =>$datos[4],'hasiera_ordua' =>$datos[5],'amaiera_ordua' =>$datos[6],'ezabatze_data' =>$datos[7]));
+            Ordutegia::where('id', $datos['id'])->update(array('ezabatze_data' =>$datos['ezabatze_data']));
         }
     }
 }

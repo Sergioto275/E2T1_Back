@@ -27,11 +27,11 @@ class talde_controller extends Controller
     public function taldea_update(Request $request)
     {
         $datos=$request->all();
-        $emaitza = talde_model::where('kodea',$datos[0])->get();
+        $emaitza = talde_model::where('kodea',$datos['kodea'])->get();
         if(!$emaitza){
             return response()->json(['errors' => "No existe",], 404);
         }else{
-            talde_model::where('kodea', $datos[0])->update(array('izena' =>$datos[1],'eguneratze_data' =>$datos[2]));
+            talde_model::where('kodea', $datos['kodea'])->update(array('izena' =>$datos['izena'],'eguneratze_data' =>$datos['eguneratze_data']));
         }        
     }
 

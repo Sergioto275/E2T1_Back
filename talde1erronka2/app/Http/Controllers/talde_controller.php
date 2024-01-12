@@ -10,8 +10,7 @@ class talde_controller extends Controller
     public function taldeak_kargatu()
     {
         $emaitza = talde_model::all();
-        $json = json_encode($emaitza);
-        return $json;
+        return response() -> json($emaitza, 200);
     }
 
     public function taldeak_kargatu_byId($kodea)
@@ -20,7 +19,7 @@ class talde_controller extends Controller
         if(!$emaitza){
             return response()->json(['errors' => "No existe",], 404);
         }else{
-            return response()->json($emaitza);
+            return response()->json($emaitza, 200);
         }   
     }
 
@@ -32,6 +31,7 @@ class talde_controller extends Controller
             return response()->json(['errors' => "No existe",], 404);
         }else{
             talde_model::where('kodea', $datos['kodea'])->update(array('izena' =>$datos['izena'],'eguneratze_data' =>$datos['eguneratze_data']));
+            return response('', 202);
         }        
     }
 
@@ -43,6 +43,7 @@ class talde_controller extends Controller
             return response()->json(['errors' => "No existe",], 404);
         }else{
             talde_model::where('kodea', $datos['kodea'])->update(array('ezabatze_data' =>$datos['ezabatze_data']));
+            return response('', 200);
         }        
     }
 
@@ -51,6 +52,6 @@ class talde_controller extends Controller
         $datos = $request->all();
         $data=["kodea"=>$datos["kodea"],"izena"=>$datos["izena"],"sortze_data"=>$datos["sortze_data"]];
         talde_model::insert($data);
-        
+        return response('', 201);
     }
 }

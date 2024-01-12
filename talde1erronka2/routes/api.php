@@ -31,11 +31,11 @@ Route::delete("/langileak","App\Http\Controllers\ControladorLangile@delete");
 Route::get("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@erakutzi");
 Route::post("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@insert");
 Route::put("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@update");
-Route::get('/ordutegiakortubyid/{id}', [ControladorOrdutegia::class, 'erakutzibyid']);
+Route::get('/ordutegiak/{id}', [ControladorOrdutegia::class, 'erakutzibyid']);
 Route::delete("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@delete");
 
 Route::get("/taldeak","App\Http\Controllers\\talde_controller@taldeak_kargatu");
-Route::get("/taldeaklortubycode/{kodea}","App\Http\Controllers\\talde_controller@taldeak_kargatu_byid");
+Route::get("/taldeak/{kodea}","App\Http\Controllers\\talde_controller@taldeak_kargatu_byid");
 Route::post("/taldeak","App\Http\Controllers\\talde_controller@taldea_insert");
 Route::put("/taldeak","App\Http\Controllers\\talde_controller@taldea_update");
 Route::delete("/taldeak","App\Http\Controllers\\talde_controller@taldea_delete");

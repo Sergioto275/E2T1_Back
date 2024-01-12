@@ -9,8 +9,7 @@ class ControladorOrdutegia extends Controller
 {
     public function erakutzi(){
         $belajar = Ordutegia::all();
-        $json= json_encode($belajar);
-        return $json;
+        return response() -> json($belajar, 200);
     }
 
     public function erakutzibyid($id){
@@ -23,10 +22,10 @@ class ControladorOrdutegia extends Controller
     }
 
     public function insert(Request $request){
-            $datos=$request->all();
-            $data=["kodea"=>$datos["kodea"],"eguna"=>$datos["eguna"],"hasiera_data"=>$datos["hasiera_data"],"amaiera_data"=>$datos["amaiera_data"],"hasiera_ordua"=>$datos["hasiera_ordua"],"amaiera_ordua"=>$datos["amaiera_ordua"],"sortze_data" =>$datos["sortze_data"]];
-            Ordutegia::insert($data);
-           // return "Se ha insertado";
+        $datos=$request->all();
+        $data=["kodea"=>$datos["kodea"],"eguna"=>$datos["eguna"],"hasiera_data"=>$datos["hasiera_data"],"amaiera_data"=>$datos["amaiera_data"],"hasiera_ordua"=>$datos["hasiera_ordua"],"amaiera_ordua"=>$datos["amaiera_ordua"],"sortze_data" =>$datos["sortze_data"]];
+        Ordutegia::insert($data);
+        return response('', 201);
     }
 
     public function update(Request $request){
@@ -37,6 +36,7 @@ class ControladorOrdutegia extends Controller
             return response()->json(['errors' => "No existe",], 404);
         }else{
             Ordutegia::where('id', $datos['id'])->update(array('kodea' =>$datos['kodea'],'eguna' =>$datos['eguna'],'hasiera_data' =>$datos['hasiera_data'],'amaiera_data' =>$datos['amaiera_data'],'hasiera_ordua' =>$datos['hasiera_ordua' ],'amaiera_ordua' =>$datos['amaiera_ordua'],'eguneratze_data' =>$datos['eguneratze_data']));
+            return response('', 202);
         }
     }
 
@@ -47,6 +47,7 @@ class ControladorOrdutegia extends Controller
             return response()->json(['errors' => "No existe",], 404);
         }else{
             Ordutegia::where('id', $datos['id'])->update(array('ezabatze_data' =>$datos['ezabatze_data']));
+            return response('', 200);
         }
     }
 }

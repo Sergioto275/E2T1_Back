@@ -38,18 +38,18 @@ class talde_controller extends Controller
     public function taldea_delete(Request $request)
     {
         $datos=$request->all();
-        $emaitza = talde_model::where('kodea',$datos[0])->get();
+        $emaitza = talde_model::where('kodea',$datos['kodea'])->get();
         if(!$emaitza){
             return response()->json(['errors' => "No existe",], 404);
         }else{
-            talde_model::where('kodea', $datos[0])->update(array('izena' =>$datos[1],'ezabatze_data' =>$datos[2]));
+            talde_model::where('kodea', $datos['kodea'])->update(array('ezabatze_data' =>$datos['ezabatze_data']));
         }        
     }
 
     public function taldea_insert(Request $request)
     {
         $datos = $request->all();
-        $data=["kodea"=>$datos[0],"izena"=>$datos[1],"sortze_data"=>$datos[2]];
+        $data=["kodea"=>$datos["kodea"],"izena"=>$datos["izena"],"sortze_data"=>$datos["sortze_data"]];
         talde_model::insert($data);
         
     }

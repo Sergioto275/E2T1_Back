@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+//=========================================================================>
+//== LANGILEAK ============================================================>
+//=========================================================================>
 
 Route::get("/langileak","App\Http\Controllers\ControladorLangile@erakutzi");
 Route::get('/langileak/{id}', [ControladorLangile::class, 'erakutzibyid']);
@@ -28,17 +31,22 @@ Route::post("/langileak","App\Http\Controllers\ControladorLangile@insert");
 Route::put("/langileak","App\Http\Controllers\ControladorLangile@update");
 Route::delete("/langileak","App\Http\Controllers\ControladorLangile@delete");
 
+//=========================================================================>
+//== ORDUTEGIAK ===========================================================>
+//=========================================================================>
+
 Route::get("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@erakutzi");
 Route::post("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@insert");
 Route::put("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@update");
 Route::get('/ordutegiak/{id}', [ControladorOrdutegia::class, 'erakutzibyid']);
 Route::delete("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@delete");
 
+//=========================================================================>
+//== TALDEAK ==============================================================>
+//=========================================================================>
+
 Route::get("/taldeak","App\Http\Controllers\\talde_controller@taldeak_kargatu");
 Route::get("/taldeak/{kodea}","App\Http\Controllers\\talde_controller@taldeak_kargatu_byid");
 Route::post("/taldeak","App\Http\Controllers\\talde_controller@taldea_insert");
 Route::put("/taldeak","App\Http\Controllers\\talde_controller@taldea_update");
 Route::delete("/taldeak","App\Http\Controllers\\talde_controller@taldea_delete");
-
-
-

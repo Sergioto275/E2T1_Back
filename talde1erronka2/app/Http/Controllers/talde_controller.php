@@ -43,7 +43,7 @@ class talde_controller extends Controller
         $datos=$request->all();
         $emaitza = talde_model::where('kodea',$datos['kodea'])->get();
         if(!$emaitza){
-            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
+            return response()->json(['Error' => "No hay resultados con ese ID"], 404);
         }else{
             talde_model::where('kodea', $datos['kodea'])->update(array('ezabatze_data' =>$datos['ezabatze_data']));
             return response('', 200);
@@ -54,7 +54,12 @@ class talde_controller extends Controller
     {
         $datos = $request->all();
         $data=["kodea"=>$datos["kodea"],"izena"=>$datos["izena"],"sortze_data"=>$datos["sortze_data"]];
-        talde_model::insert($data);
-        return response('', 201);
+        $emaitza = talde_model::where('kodea', $datos['kodea']) -> get();
+        if ($emaitza->isEmpty()) {
+            talde_model::insert($data);
+            return response('', 201);
+        } else {
+            return response()->json(['Error' => "Kodea repetido"], 409);
+        }
     }
 }

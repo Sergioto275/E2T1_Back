@@ -9,13 +9,17 @@ class ControladorLangile extends Controller
 {
     public function erakutzi(){
         $belajar = Langile::all();
-        return response() -> json($belajar, 200);
+        if(!$belajar){
+            return response()->json(['Error' => "No hay resultados",], 404);
+        } else{
+            return response() -> json($belajar, 200);
+        }
     }
 
     public function erakutzibyid($id){
         $belajar = Langile::find($id);
         if(!$belajar){
-            return response()->json(['Errorea' => "Ez dago emaitzik id horrekin",], 404);
+            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
             return response()->json($belajar);
         }   
@@ -32,7 +36,7 @@ class ControladorLangile extends Controller
         $datos=$request->all();
         $belajar = Langile::find($datos['id']);
         if(!$belajar){
-            return response()->json(['errors' => "No existe",], 404);
+            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
             Langile::where('id', $datos['id'])->update(array('izena'=>$datos['izena'],'abizenak'=>$datos['abizenak'],'kodea'=>$datos['kodea'],'eguneratze_data'=>$datos['eguneratze_data']));
             return response('', 202);
@@ -44,7 +48,7 @@ class ControladorLangile extends Controller
         $datos=$request->all();
         $belajar = Langile::find($datos['id']);
         if(!$belajar){
-            return response()->json(['errors' => "No existe",], 404);
+            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
             Langile::where('id', $datos['id'])->update(array('ezabatze_data'=>$datos['ezabatze_data']));
             return response('', 200);

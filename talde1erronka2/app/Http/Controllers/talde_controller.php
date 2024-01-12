@@ -10,6 +10,9 @@ class talde_controller extends Controller
     public function taldeak_kargatu()
     {
         $emaitza = talde_model::all();
+        if(!$emaitza){
+            return response()->json(['Error' => "No hay resultados",], 404);
+        }
         return response() -> json($emaitza, 200);
     }
 
@@ -17,7 +20,7 @@ class talde_controller extends Controller
     {
         $emaitza = talde_model::where('kodea',$kodea)->get();
         if(!$emaitza){
-            return response()->json(['errors' => "No existe",], 404);
+            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
             return response()->json($emaitza, 200);
         }   
@@ -28,7 +31,7 @@ class talde_controller extends Controller
         $datos=$request->all();
         $emaitza = talde_model::where('kodea',$datos['kodea'])->get();
         if(!$emaitza){
-            return response()->json(['errors' => "No existe",], 404);
+            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
             talde_model::where('kodea', $datos['kodea'])->update(array('izena' =>$datos['izena'],'eguneratze_data' =>$datos['eguneratze_data']));
             return response('', 202);
@@ -40,7 +43,7 @@ class talde_controller extends Controller
         $datos=$request->all();
         $emaitza = talde_model::where('kodea',$datos['kodea'])->get();
         if(!$emaitza){
-            return response()->json(['errors' => "No existe",], 404);
+            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
             talde_model::where('kodea', $datos['kodea'])->update(array('ezabatze_data' =>$datos['ezabatze_data']));
             return response('', 200);

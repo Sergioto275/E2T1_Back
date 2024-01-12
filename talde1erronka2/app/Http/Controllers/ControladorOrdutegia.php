@@ -9,13 +9,17 @@ class ControladorOrdutegia extends Controller
 {
     public function erakutzi(){
         $belajar = Ordutegia::all();
-        return response() -> json($belajar, 200);
+        if(!$belajar){
+            return response()->json(['Error' => "No hay resultados",], 404);
+        } else{
+            return response() -> json($belajar, 200);        
+        }
     }
 
     public function erakutzibyid($id){
         $belajar = Ordutegia::where('id',$id)->get();
         if(!$belajar){
-            return response()->json(['errors' => "No existe",], 404);
+            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
             return response()->json($belajar);
         }   
@@ -33,7 +37,7 @@ class ControladorOrdutegia extends Controller
         $datos=$request->all();
         $belajar = Ordutegia::find($datos["id"]);
         if(!$belajar){
-            return response()->json(['errors' => "No existe",], 404);
+            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
             Ordutegia::where('id', $datos['id'])->update(array('kodea' =>$datos['kodea'],'eguna' =>$datos['eguna'],'hasiera_data' =>$datos['hasiera_data'],'amaiera_data' =>$datos['amaiera_data'],'hasiera_ordua' =>$datos['hasiera_ordua' ],'amaiera_ordua' =>$datos['amaiera_ordua'],'eguneratze_data' =>$datos['eguneratze_data']));
             return response('', 202);
@@ -44,7 +48,7 @@ class ControladorOrdutegia extends Controller
         $datos=$request->all();
         $belajar = Ordutegia::find($datos['id']);
         if(!$belajar){
-            return response()->json(['errors' => "No existe",], 404);
+            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
             Ordutegia::where('id', $datos['id'])->update(array('ezabatze_data' =>$datos['ezabatze_data']));
             return response('', 200);

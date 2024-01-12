@@ -9,7 +9,7 @@ services:
     container_name: apache-front
     build: web/
     ports:
-      - 8082:80
+      - 8080:80
       - 443:443
     volumes:
       - ../../E2T1_Front:/var/www/html
@@ -49,7 +49,7 @@ services:
     container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin
     ports:
-      - 8080:80
+      - 8090:80
     environment:
       # Proiektuko mysql zerbitzuarekin konektatzen du zuzenean
       PMA_HOST: mysql

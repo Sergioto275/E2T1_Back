@@ -14,7 +14,7 @@ COPY apache2.conf /etc/apache2/
 COPY talde1_back.conf /etc/apache2/sites-available/
 
 RUN a2ensite talde1_back.conf && \
-    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/www.talde1_back.edu.key -out /etc/ssl/certs/www.talde1_back.edu.crt -subj "/C=ES/ST=Bizkaia/L=Santurtzi/O=IronChip/OU=SanJorge/CN=SanJorge/emailAddress=ironchip@gmail.com" && \
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/www.talde1-back.edu.key -out /etc/ssl/certs/www.talde1-back.edu.crt -subj "/C=ES/ST=Bizkaia/L=Santurtzi/O=IronChip/OU=SanJorge/CN=SanJorge/emailAddress=ironchip@gmail.com" && \
     a2enmod ssl && \
     a2enmod rewrite && \
     service apache2 restart

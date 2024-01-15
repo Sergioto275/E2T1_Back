@@ -16,9 +16,9 @@ services:
 
   apache-back:
     container_name: apache-back
-    build: web/
-      # context: 
-      # dockerfile: DockerFileApacheBack
+    build: 
+      context: web/
+      dockerfile: DockerFileApacheBack
     ports:
       - 8081:80
       - 8443:443

@@ -3,7 +3,7 @@ FROM php:apache
 # MySQLi eta mysql bezeroa instalatu
 RUN docker-php-ext-install mysqli && \
     apt-get update && \ 
-    apt-get install -y default-mysql-client
+    apt-get install -y default-mysql-client && \
     curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php && \
     HASH=`curl -sS https://composer.github.io/installer.sig` && \
     php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer && \

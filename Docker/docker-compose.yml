@@ -20,8 +20,8 @@ services:
       context: web/
       dockerfile: DockerFileApacheBack
     ports:
-      - 8081:81
-      - 8443:8443
+      - 8081:80
+      - 8443:443
     volumes:
       - ../talde1erronka2:/var/www/html
  

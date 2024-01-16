@@ -27,9 +27,20 @@ class ControladorOrdutegia extends Controller
 
     public function insert(Request $request){
         $datos=$request->all();
-        $data=["kodea"=>$datos["kodea"],"eguna"=>$datos["eguna"],"hasiera_data"=>$datos["hasiera_data"],"amaiera_data"=>$datos["amaiera_data"],"hasiera_ordua"=>$datos["hasiera_ordua"],"amaiera_ordua"=>$datos["amaiera_ordua"],"sortze_data" =>$datos["sortze_data"]];
-        Ordutegia::insert($data);
-        return response('', 201);
+        $belajar = Ordutegia::where('eguna', $datos["eguna"])
+        ->where(function ($query) use ($datos) {
+            // Check for non-overlapping date ranges
+            $query->where('amaiera_data', '<=', $datos["hasiera_data"])
+                ->where('hasiera_data', '>=', $datos["amaiera_data"]);
+        })
+        ->get();
+            if(count($belajar)>0){
+                return response()->json(['Error' => "Ya hay un grupo este dia",], 404);
+            }
+            $data=["kodea"=>$datos["kodea"],"eguna"=>$datos["eguna"],"hasiera_data"=>$datos["hasiera_data"],"amaiera_data"=>$datos["amaiera_data"],"hasiera_ordua"=>$datos["hasiera_ordua"],"amaiera_ordua"=>$datos["amaiera_ordua"],"sortze_data" =>$datos["sortze_data"]];
+            Ordutegia::insert($data);   
+            return response('', 201);
+    
     }
 
     public function update(Request $request){

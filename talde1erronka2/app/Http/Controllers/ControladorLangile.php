@@ -54,4 +54,22 @@ class ControladorLangile extends Controller
             return response('', 200);
         }
     }
+
+    public function erakutzibyizena($izena){
+        $belajar = Langile::where('izena',$izena)->get();
+        if(!$belajar){
+            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
+        }else{
+            return response()->json($belajar);
+        }   
+    }
+
+    public function erakutzibykodea($kodea){
+        $belajar = Langile::where('kodea',$kodea)->get();
+        if(!$belajar){
+            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
+        }else{
+            return response()->json($belajar);
+        }   
+    }
 }

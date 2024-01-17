@@ -5,9 +5,9 @@ use App\Models\Langile;
 
 use Illuminate\Http\Request;
 
-class ControladorLangile extends Controller
+class langile_controller extends Controller
 {
-    public function erakutzi(){
+    public function getAll(){
         $belajar = Langile::all();
         if(!$belajar){
             return response()->json(['Error' => "No hay resultados",], 404);
@@ -16,7 +16,7 @@ class ControladorLangile extends Controller
         }
     }
 
-    public function erakutzibyid($id){
+    public function getById($id){
         $belajar = Langile::find($id);
         if(!$belajar){
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);
@@ -53,14 +53,5 @@ class ControladorLangile extends Controller
             Langile::where('id', $datos['id'])->update(array('ezabatze_data'=>$datos['ezabatze_data']));
             return response('', 200);
         }
-    }
-
-    public function erakutzibykodea($kodea){
-        $belajar = Langile::where('kodea',$kodea)->get();
-        if(!$belajar){
-            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
-        }else{
-            return response()->json($belajar);
-        }   
     }
 }

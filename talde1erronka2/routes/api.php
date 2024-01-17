@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ControladorLangile;
-use App\Http\Controllers\ControladorOrdutegia;
+use App\Http\Controllers\langile_controller;
+use App\Http\Controllers\ordutegia_controller;
 
 use App\Models\Langile;
 use Illuminate\Http\Request;
@@ -25,28 +25,38 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //== LANGILEAK ============================================================>
 //=========================================================================>
 
-Route::get("/langileak","App\Http\Controllers\ControladorLangile@erakutzi");
-Route::get('/langileak/{id}', [ControladorLangile::class, 'erakutzibyid']);
-Route::post("/langileak","App\Http\Controllers\ControladorLangile@insert");
-Route::put("/langileak","App\Http\Controllers\ControladorLangile@update");
-Route::delete("/langileak","App\Http\Controllers\ControladorLangile@delete");
+Route::get("/langileak","App\Http\Controllers\langile_controller@getAll");
+Route::get('/langileak/{id}', [langile_controller::class, 'getById']);
+Route::post("/langileak","App\Http\Controllers\langile_controller@insert");
+Route::put("/langileak","App\Http\Controllers\langile_controller@update");
+Route::delete("/langileak","App\Http\Controllers\langile_controller@delete");
 
 //=========================================================================>
 //== ORDUTEGIAK ===========================================================>
 //=========================================================================>
 
-Route::get("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@erakutzi");
-Route::post("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@insert");
-Route::put("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@update");
-Route::get('/ordutegiak/{id}', [ControladorOrdutegia::class, 'erakutzibyid']);
-Route::delete("/ordutegiak","App\Http\Controllers\ControladorOrdutegia@delete");
+Route::get("/ordutegiak","App\Http\Controllers\ordutegia_controller@getAll");
+Route::get('/ordutegiak/{id}', [ordutegia_controller::class, 'getById']);
+Route::post("/ordutegiak","App\Http\Controllers\ordutegia_controller@insert");
+Route::put("/ordutegiak","App\Http\Controllers\ordutegia_controller@update");
+Route::delete("/ordutegiak","App\Http\Controllers\ordutegia_controller@delete");
 
 //=========================================================================>
 //== TALDEAK ==============================================================>
 //=========================================================================>
 
-Route::get("/taldeak","App\Http\Controllers\\talde_controller@taldeak_kargatu");
-Route::get("/taldeak/{kodea}","App\Http\Controllers\\talde_controller@taldeak_kargatu_byid");
-Route::post("/taldeak","App\Http\Controllers\\talde_controller@taldea_insert");
-Route::put("/taldeak","App\Http\Controllers\\talde_controller@taldea_update");
-Route::delete("/taldeak","App\Http\Controllers\\talde_controller@taldea_delete");
+Route::get("/taldeak","App\Http\Controllers\\talde_controller@getAll");
+Route::get("/taldeak/{kodea}","App\Http\Controllers\\talde_controller@getById");
+Route::post("/taldeak","App\Http\Controllers\\talde_controller@insert");
+Route::put("/taldeak","App\Http\Controllers\\talde_controller@update");
+Route::delete("/taldeak","App\Http\Controllers\\talde_controller@delete");
+
+//=========================================================================>
+//== PRODUKTUAK ===========================================================>
+//=========================================================================>
+
+Route::get("/produktuak","App\Http\Controllers\\produktua_controller@getAll");
+Route::get("/produktuak/{id}","App\Http\Controllers\\produktua_controller@getById");
+Route::post("/produktuak","App\Http\Controllers\\produktua_controller@insert");
+Route::put("/produktuak","App\Http\Controllers\\produktua_controller@update");
+Route::delete("/produktuak","App\Http\Controllers\\produktua_controller@delete");

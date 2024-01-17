@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Ordutegia;
 use Illuminate\Http\Request;
 
-class ControladorOrdutegia extends Controller
+class ordutegia_controller extends Controller
 {
-    public function erakutzi(){
+    public function getAll(){
         $belajar = Ordutegia::all();
         if(!$belajar){
             return response()->json(['Error' => "No hay resultados",], 404);
@@ -16,7 +16,7 @@ class ControladorOrdutegia extends Controller
         }
     }
 
-    public function erakutzibyid($id){
+    public function getById($id){
         $belajar = Ordutegia::where('id',$id)->get();
         if(!$belajar){
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);

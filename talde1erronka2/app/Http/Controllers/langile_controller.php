@@ -10,7 +10,7 @@ class langile_controller extends Controller
     public function getAll(){
         $belajar = Langile::all();
         if(!$belajar){
-            return response()->json(['Error' => "No hay resultados",], 404);
+            return response()->json(['Error' => "No hay resultados"], 404);
         } else{
             return response() -> json($belajar, 200);
         }

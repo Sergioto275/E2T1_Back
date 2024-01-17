@@ -60,3 +60,9 @@ Route::get("/produktuak/{id}","App\Http\Controllers\\produktua_controller@getByI
 Route::post("/produktuak","App\Http\Controllers\\produktua_controller@insert");
 Route::put("/produktuak","App\Http\Controllers\\produktua_controller@update");
 Route::delete("/produktuak","App\Http\Controllers\\produktua_controller@delete");
+//=========================================================================>
+//== HITZORDUAK ===========================================================>
+//=========================================================================>
+
+Route::get("/hitzorduak","App\Http\Controllers\\hitzordu_controller@erakutzi");
+

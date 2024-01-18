@@ -66,3 +66,12 @@ Route::delete("/produktuak","App\Http\Controllers\\produktua_controller@delete")
 
 Route::get("/hitzorduak","App\Http\Controllers\\hitzordu_controller@erakutzi");
 
+
+//=========================================================================>
+//== KATEGORIAK ===========================================================>
+//=========================================================================>
+Route::get("/kategoriak","App\Http\Controllers\\kategoria_controller@getAll");
+Route::get("/kategoriak/{id}","App\Http\Controllers\\kategoria_controller@getById");
+Route::post("/kategoriak","App\Http\Controllers\\kategoria_controller@insert");
+Route::put("/kategoriak","App\Http\Controllers\\kategoria_controller@update");
+Route::delete("/kategoriak","App\Http\Controllers\\kategoria_controller@delete");

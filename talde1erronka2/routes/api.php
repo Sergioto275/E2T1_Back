@@ -60,10 +60,22 @@ Route::get("/produktuak/{id}","App\Http\Controllers\\produktua_controller@getByI
 Route::post("/produktuak","App\Http\Controllers\\produktua_controller@insert");
 Route::put("/produktuak","App\Http\Controllers\\produktua_controller@update");
 Route::delete("/produktuak","App\Http\Controllers\\produktua_controller@delete");
+//=========================================================================>
+//== HITZORDUAK ===========================================================>
+//=========================================================================>
+
+Route::get("/hitzorduak","App\Http\Controllers\\hitzordu_controller@erakutzi");
+Route::post("/hitzorduak","App\Http\Controllers\\hitzordu_controller@insert");
+
 
 //=========================================================================>
-//== TXANDA ===============================================================>
+//== KATEGORIAK ===========================================================>
 //=========================================================================>
+Route::get("/kategoriak","App\Http\Controllers\\kategoria_controller@getAll");
+Route::get("/kategoriak/{id}","App\Http\Controllers\\kategoria_controller@getById");
+Route::post("/kategoriak","App\Http\Controllers\\kategoria_controller@insert");
+Route::put("/kategoriak","App\Http\Controllers\\kategoria_controller@update");
+Route::delete("/kategoriak","App\Http\Controllers\\kategoria_controller@delete");
 
 Route::get("/txanda","App\Http\Controllers\\txanda_controller@getAll");
 Route::get("/txanda/{id}","App\Http\Controllers\\txanda_controller@getById");

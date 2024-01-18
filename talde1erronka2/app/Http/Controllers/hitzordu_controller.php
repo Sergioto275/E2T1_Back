@@ -52,15 +52,16 @@ class hitzordu_controller extends Controller
                     'link' => ''
                 ];
                 $citas = $this->agregarEvento($citas,$dato->data,$event);
-                // $fecha = Carbon::parse($dato->sortze_data);
-                // $dato->ano = $fecha->year;
-                // $dato->mes = $fecha->month;
-                // $dato->dia = $fecha->day;
             }
     
             return response()->json($citas, 200);
         }
     }
 
-    
+    public function insert(Request $request){
+        $datos=$request->all();
+        $data=["eserlekua"=>"4","data"=>$datos["data"],"hasiera_ordua"=>$datos["hasOrdua"],"amaiera_ordua"=>$datos["amaOrdua"],"izena"=>$datos["izena"],"telefonoa"=>$datos["telefonoa"],"deskribapena"=>$datos["deskribapena"],"etxekoa"=>$datos["etxekoa"]];
+        hitzordu_model::insert($data);
+        return response('', 201);
+    }
 }

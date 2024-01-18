@@ -65,4 +65,4 @@ Route::delete("/produktuak","App\Http\Controllers\\produktua_controller@delete")
 //=========================================================================>
 
 Route::get("/hitzorduak","App\Http\Controllers\\hitzordu_controller@erakutzi");
-
+Route::post("/hitzorduak","App\Http\Controllers\\hitzordu_controller@insert");

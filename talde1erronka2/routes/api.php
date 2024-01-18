@@ -60,3 +60,13 @@ Route::get("/produktuak/{id}","App\Http\Controllers\\produktua_controller@getByI
 Route::post("/produktuak","App\Http\Controllers\\produktua_controller@insert");
 Route::put("/produktuak","App\Http\Controllers\\produktua_controller@update");
 Route::delete("/produktuak","App\Http\Controllers\\produktua_controller@delete");
+
+//=========================================================================>
+//== TXANDA ===============================================================>
+//=========================================================================>
+
+Route::get("/txanda","App\Http\Controllers\\txanda_controller@getAll");
+Route::get("/txanda/{id}","App\Http\Controllers\\txanda_controller@getById");
+Route::post("/txanda","App\Http\Controllers\\txanda_controller@insert");
+Route::put("/txanda","App\Http\Controllers\\txanda_controller@update");
+Route::delete("/txanda","App\Http\Controllers\\txanda_controller@delete");

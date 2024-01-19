@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\hitzordu_model;
 use App\Models\Langile;
+use App\Models\Ordutegia;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use Error;
 
 class hitzordu_controller extends Controller
 {
@@ -100,7 +101,7 @@ class hitzordu_controller extends Controller
         $hasiera_ordua = $datos["hasiera_ordua"];
         $amaiera_ordua = $datos["amaiera_ordua"];
         $fechaCarbon = Carbon::parse($data);
-        $eguna = $fechaCarbon->dayName;
+        $eguna = $fechaCarbon->dayOfWeek;
         $count = Langile::where('kodea', function ($query) use ($data, $eguna) {
             $query->select('kodea')
                 ->from('ordutegia')
@@ -112,12 +113,18 @@ class hitzordu_controller extends Controller
                         ->orWhere('ezabatze_data', '0000-00-00');
                 });
         })->count();
-        echo $count."||";
-
         $count--;
         $hitzordu_kop = $this->hitzordu_kop($data, $hasiera_ordua, $amaiera_ordua);
-        echo $hitzordu_kop."||";
-        $citas_disponibles = $count - $hitzordu_kop;
+        $citas_disponibles =  $count - $hitzordu_kop;
         return $citas_disponibles;
+    }
+
+    public function citasbydate($data){
+        $citas = hitzordu_model::where('data','=',$data)->get();
+        if($citas->isEmpty()){
+            return response()->json(["Error" => "Ez dira daturik aurkitu"], 404);
+        }else{
+            return response()->json($citas, 200);
+        }
     }
 }

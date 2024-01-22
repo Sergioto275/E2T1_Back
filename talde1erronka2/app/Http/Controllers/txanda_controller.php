@@ -27,7 +27,7 @@ class txanda_controller extends Controller
 
     public function insert(Request $request){
             $datos=$request->all();
-            $data=["mota"=>$datos["mota"],"data"=>$datos["data"],"id_langilea"=>$datos["id_langilea"],"sortze_data"=>$datos["sortze_data"]];
+            $data=["mota"=>$datos["mota"],"data"=>$datos["data"],"id_langilea"=>$datos["id_langilea"]];
             Txanda::insert($data);
             return response('', 201);
     }
@@ -38,7 +38,9 @@ class txanda_controller extends Controller
         if(!$belajar){
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
-            Txanda::where('id', $datos['id'])->update(array("mota"=>$datos["mota"],"data"=>$datos["data"],"id_langilea"=>$datos["id_langilea"],"sortze_data"=>$datos["sortze_data"]));
+            date_default_timezone_set('Europe/Madrid');
+            $eguneratze_data = date("Y-m-d H:i:s");
+            Txanda::where('id', $datos['id'])->update(array("mota"=>$datos["mota"],"data"=>$datos["data"],"id_langilea"=>$datos["id_langilea"],"eguneratze_data"=>$eguneratze_data));
             return response('', 202);
         }
 
@@ -50,7 +52,9 @@ class txanda_controller extends Controller
         if(!$belajar){
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
-            Txanda::where('id', $datos['id'])->update(array('ezabatze_data'=>$datos['ezabatze_data']));
+            date_default_timezone_set('Europe/Madrid');
+            $ezabatze_data = date("Y-m-d H:i:s");
+            Txanda::where('id', $datos['id'])->update(array('ezabatze_data'=>$ezabatze_data));
             return response('', 200);
         }
     }

@@ -153,4 +153,17 @@ class hitzordu_controller extends Controller
             return response('', 200);
         }
     }
+
+    public function asignar(Request $request){
+        $datos=$request->all();
+        $belajar = hitzordu_model::find($datos['id']);
+        if(!$belajar){
+            return response()->json(['Error' => "No hay resultados con ese ID",], 404);
+        }else{
+            date_default_timezone_set('Europe/Madrid');
+            $hasiera_ordua_erreala = date("H:i:s");
+            hitzordu_model::where('id', $datos['id'])->update(array('hasiera_ordua_erreala'=>$hasiera_ordua_erreala,'id_langilea'=>$datos["id_langilea"]));
+            return response('', 200);
+        }
+    }
 }

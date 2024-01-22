@@ -38,7 +38,7 @@ class txanda_controller extends Controller
         if(!$belajar){
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
-            Txanda::where('id', $datos['id'])->update(array("mota"=>$datos["mota"],"data"=>$datos["data"],"id_langilea"=>$datos["id_langilea"],"sortze_data"=>$datos["sortze_data"]));
+            Txanda::where('id', $datos['id'])->update(array("mota"=>$datos["mota"],"id_langilea"=>$datos["id_langilea"],"eguneratze_data"=>$datos["eguneratze_data"]));
             return response('', 202);
         }
 

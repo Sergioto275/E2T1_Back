@@ -65,7 +65,11 @@ Route::delete("/produktuak","App\Http\Controllers\\produktua_controller@delete")
 //=========================================================================>
 
 Route::get("/hitzorduak","App\Http\Controllers\\hitzordu_controller@erakutzi");
+Route::get("/hitzorduakbydate/{data}","App\Http\Controllers\\hitzordu_controller@citasbydate");
+Route::post("/hitzordu_eskuragarri","App\Http\Controllers\\hitzordu_controller@citas_diaponibles");
 Route::post("/hitzorduak","App\Http\Controllers\\hitzordu_controller@insert");
+Route::put("/hitzorduak","App\Http\Controllers\\hitzordu_controller@update");
+Route::delete("/hitzorduak","App\Http\Controllers\\hitzordu_controller@delete");
 
 
 //=========================================================================>

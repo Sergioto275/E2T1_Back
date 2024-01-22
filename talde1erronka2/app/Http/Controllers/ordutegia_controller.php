@@ -37,7 +37,7 @@ class ordutegia_controller extends Controller
             if(count($belajar)>0){
                 return response()->json(['Error' => "Ya hay un grupo este dia",], 404);
             }
-            $data=["kodea"=>$datos["kodea"],"eguna"=>$datos["eguna"],"hasiera_data"=>$datos["hasiera_data"],"amaiera_data"=>$datos["amaiera_data"],"hasiera_ordua"=>$datos["hasiera_ordua"],"amaiera_ordua"=>$datos["amaiera_ordua"],"sortze_data" =>$datos["sortze_data"]];
+            $data=["kodea"=>$datos["kodea"],"eguna"=>$datos["eguna"],"hasiera_data"=>$datos["hasiera_data"],"amaiera_data"=>$datos["amaiera_data"],"hasiera_ordua"=>$datos["hasiera_ordua"],"amaiera_ordua"=>$datos["amaiera_ordua"]];
             Ordutegia::insert($data);   
             return response('', 201);
     
@@ -50,7 +50,9 @@ class ordutegia_controller extends Controller
         if(!$belajar){
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
-            Ordutegia::where('id', $datos['id'])->update(array('kodea' =>$datos['kodea'],'eguna' =>$datos['eguna'],'hasiera_data' =>$datos['hasiera_data'],'amaiera_data' =>$datos['amaiera_data'],'hasiera_ordua' =>$datos['hasiera_ordua' ],'amaiera_ordua' =>$datos['amaiera_ordua'],'eguneratze_data' =>$datos['eguneratze_data']));
+            date_default_timezone_set('Europe/Madrid');
+            $eguneratze_data = date("Y-m-d H:i:s");
+            Ordutegia::where('id', $datos['id'])->update(array('kodea' =>$datos['kodea'],'eguna' =>$datos['eguna'],'hasiera_data' =>$datos['hasiera_data'],'amaiera_data' =>$datos['amaiera_data'],'hasiera_ordua' =>$datos['hasiera_ordua' ],'amaiera_ordua' =>$datos['amaiera_ordua'],'eguneratze_data' =>$eguneratze_data));
             return response('', 202);
         }
     }
@@ -61,7 +63,9 @@ class ordutegia_controller extends Controller
         if(!$belajar){
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
-            Ordutegia::where('id', $datos['id'])->update(array('ezabatze_data' =>$datos['ezabatze_data']));
+            date_default_timezone_set('Europe/Madrid');
+            $ezabatze_data = date("Y-m-d H:i:s");
+            Ordutegia::where('id', $datos['id'])->update(array('ezabatze_data' =>$ezabatze_data));
             return response('', 200);
         }
     }

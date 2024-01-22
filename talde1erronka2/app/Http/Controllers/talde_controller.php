@@ -33,7 +33,9 @@ class talde_controller extends Controller
         if(!$emaitza){
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
-            Taldea::where('kodea', $datos['kodea'])->update(array('izena' =>$datos['izena'],'eguneratze_data' =>$datos['eguneratze_data']));
+            date_default_timezone_set('Europe/Madrid');
+            $eguneratze_data = date("Y-m-d H:i:s");
+            Taldea::where('kodea', $datos['kodea'])->update(array('izena' =>$datos['izena'],'eguneratze_data' =>$eguneratze_data));
             return response('', 202);
         }        
     }
@@ -45,7 +47,9 @@ class talde_controller extends Controller
         if(!$emaitza){
             return response()->json(['Error' => "No hay resultados con ese ID"], 404);
         }else{
-            Taldea::where('kodea', $datos['kodea'])->update(array('ezabatze_data' =>$datos['ezabatze_data']));
+            date_default_timezone_set('Europe/Madrid');
+            $ezabatze_data = date("Y-m-d H:i:s");
+            Taldea::where('kodea', $datos['kodea'])->update(array('ezabatze_data' =>$ezabatze_data));
             return response('', 200);
         }        
     }
@@ -53,7 +57,7 @@ class talde_controller extends Controller
     public function insert(Request $request)
     {
         $datos = $request->all();
-        $data=["kodea"=>$datos["kodea"],"izena"=>$datos["izena"],"sortze_data"=>$datos["sortze_data"]];
+        $data=["kodea"=>$datos["kodea"],"izena"=>$datos["izena"]];
         $emaitza = Taldea::where('kodea', $datos['kodea']) -> get();
         if ($emaitza->isEmpty()) {
             Taldea::insert($data);

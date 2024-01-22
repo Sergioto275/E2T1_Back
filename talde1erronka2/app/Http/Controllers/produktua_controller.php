@@ -41,8 +41,7 @@ class produktua_controller extends Controller
                 "id_kategoria"=>$datos["id_kategoria"],
                 "marka"=>$datos["marka"],
                 "stock" => $datos["stock"],
-                "stock_alerta" => $datos["stock_alerta"], 
-                "sortze_data"=>$datos["sortze_data"]];
+                "stock_alerta" => $datos["stock_alerta"]];
             Produktua::insert($data);
             return response('', 201);
     }
@@ -53,7 +52,9 @@ class produktua_controller extends Controller
         if(!$belajar){
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
-            Produktua::where('id', $datos['id'])->update(array("izena"=>$datos["izena"],"deskribapena"=>$datos["deskribapena"],"id_kategoria"=>$datos["id_kategoria"],"marka"=>$datos["marka"],"stock" => $datos["stock"],"stock_alerta" => $datos["stock_alerta"],'eguneratze_data'=>$datos['eguneratze_data']));
+            date_default_timezone_set('Europe/Madrid');
+            $eguneratze_data = date("Y-m-d H:i:s");
+            Produktua::where('id', $datos['id'])->update(array("izena"=>$datos["izena"],"deskribapena"=>$datos["deskribapena"],"id_kategoria"=>$datos["id_kategoria"],"marka"=>$datos["marka"],"stock" => $datos["stock"],"stock_alerta" => $datos["stock_alerta"],'eguneratze_data'=>$eguneratze_data));
             return response('', 202);
         }
 
@@ -65,7 +66,9 @@ class produktua_controller extends Controller
         if(!$belajar){
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
-            Produktua::where('id', $datos['id'])->update(array('ezabatze_data'=>$datos['ezabatze_data']));
+            date_default_timezone_set('Europe/Madrid');
+            $ezabatze_data = date("Y-m-d H:i:s");
+            Produktua::where('id', $datos['id'])->update(array('ezabatze_data'=>$ezabatze_data));
             return response('', 200);
         }
     }

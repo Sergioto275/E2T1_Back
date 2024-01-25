@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Langile;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class langile_controller extends Controller
@@ -23,12 +23,12 @@ class langile_controller extends Controller
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{
             return response()->json($belajar);
-        }   
+        }
     }
 
     public function insert(Request $request){
-            $datos=$request->all();
-            $data=["izena"=>$datos["izena"],"abizenak"=>$datos["abizenak"],"kodea"=>$datos["kodea"]];
+            $datos = $request->all();
+            $data = ["izena"=>$datos["izena"],"abizenak"=>$datos["abizenak"],"kodea"=>$datos["kodea"]];
             Langile::insert($data);
             return response('', 201);
     }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class langile_controller extends Controller
 {
+    
     public function getAll(){
         $belajar = Langile::all();
         if(!$belajar){

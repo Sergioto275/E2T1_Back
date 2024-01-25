@@ -6,6 +6,11 @@ use App\Http\Controllers\ordutegia_controller;
 use App\Models\Langile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Fruitcake\Cors\CorsMiddleware;
+
+// ...
+
+// Aplicar CORS a todas las rutas de la API
 
 /*
 |--------------------------------------------------------------------------
@@ -81,8 +86,29 @@ Route::post("/kategoriak","App\Http\Controllers\\kategoria_controller@insert");
 Route::put("/kategoriak","App\Http\Controllers\\kategoria_controller@update");
 Route::delete("/kategoriak","App\Http\Controllers\\kategoria_controller@delete");
 
+//=========================================================================>
+//== TXANDAK ==============================================================>
+//=========================================================================>
 Route::get("/txanda","App\Http\Controllers\\txanda_controller@getAll");
 Route::get("/txanda/{id}","App\Http\Controllers\\txanda_controller@getById");
 Route::post("/txanda","App\Http\Controllers\\txanda_controller@insert");
 Route::put("/txanda","App\Http\Controllers\\txanda_controller@update");
 Route::delete("/txanda","App\Http\Controllers\\txanda_controller@delete");
+
+//=========================================================================>
+//== BEZEROAK =============================================================>
+//=========================================================================>
+Route::get("/bezero","App\Http\Controllers\\bezero_controller@getAll");
+Route::get("/bezero/{id}","App\Http\Controllers\\bezero_controller@getById");
+Route::post("/bezero","App\Http\Controllers\\bezero_controller@insert");
+Route::put("/bezero","App\Http\Controllers\\bezero_controller@update");
+Route::delete("/bezero","App\Http\Controllers\\bezero_controller@delete");
+
+//=========================================================================>
+//== KOLORE ===============================================================>
+//=========================================================================>
+Route::get("/kolore","App\Http\Controllers\\kolore_histroriala_controller@getAll");
+Route::get("/kolore/{id}","App\Http\Controllers\\kolore_histroriala_controller@getById");
+Route::post("/kolore","App\Http\Controllers\\kolore_histroriala_controller@insert");
+Route::put("/kolore","App\Http\Controllers\\kolore_histroriala_controller@update");
+Route::delete("/kolore","App\Http\Controllers\\kolore_histroriala_controller@delete");

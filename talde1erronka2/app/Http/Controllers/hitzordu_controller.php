@@ -99,7 +99,7 @@ class hitzordu_controller extends Controller
         }else{
             date_default_timezone_set('Europe/Madrid');
             $eguneratze_data = date("Y-m-d H:i:s");
-            Hitzordu::where('id', $datos['id'])->update(array('data'=>$datos['data'],'hasiera_ordua'=>$datos['hasiera_ordua'],'amaiera_ordua'=>$datos['amaiera_ordua'],'izena'=>$datos['izena'],'telefonoa'=>$datos['telefonoa'],'deskribapena'=>$datos['deskribapena'],'etxekoa'=>$datos['etxekoa'], "eguneratze_data" => $eguneratze_data));
+            Hitzordu::where('id', $datos['id'])->update(array('eserlekua'=>$datos['eserlekua'],'data'=>$datos['data'],'hasiera_ordua'=>$datos['hasiera_ordua'],'amaiera_ordua'=>$datos['amaiera_ordua'],'izena'=>$datos['izena'],'telefonoa'=>$datos['telefonoa'],'deskribapena'=>$datos['deskribapena'],'etxekoa'=>$datos['etxekoa'], "eguneratze_data" => $eguneratze_data));
             return response('', 202);
         }
     }

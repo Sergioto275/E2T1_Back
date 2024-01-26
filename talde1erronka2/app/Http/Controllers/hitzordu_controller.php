@@ -140,7 +140,7 @@ class hitzordu_controller extends Controller
             date_default_timezone_set('Europe/Madrid');
             $eguneratze_data = date("Y-m-d H:i:s");
             $amaiera_ordua_erreala = date("H:i:s");
-            Hitzordu::where('id', $datos['id'])->update(array('amaiera_ordua_erreala'=>$amaiera_ordua_erreala, "eguneratze_data" => $eguneratze_data));
+            Hitzordu::where('id', $datos['id'])->update(array('prezio_totala'=>$datos['prezio_totala'],'amaiera_ordua_erreala'=>$amaiera_ordua_erreala, "eguneratze_data" => $eguneratze_data));
             return response('', 200);
         }
     }

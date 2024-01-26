@@ -129,7 +129,16 @@ Route::put("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@update
 Route::delete("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@delete");
 
 //=========================================================================>
-//== TRATAMENDUAK =========================================================>
+//== TICKET LERRO =========================================================>
 //=========================================================================>
 
 Route::post("/ticket_lerro","App\Http\Controllers\\ticket_lerro_controller@insert");
+
+//=========================================================================>
+//== TRATAMENDU KATEGORIAK ================================================>
+//=========================================================================>
+
+Route::get("/kategoriaTratamendu","App\Http\Controllers\\kategoriaTratamendu_controller@erakutzi");
+// Route::post("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@insert");
+// Route::put("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@update");
+// Route::delete("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@delete");

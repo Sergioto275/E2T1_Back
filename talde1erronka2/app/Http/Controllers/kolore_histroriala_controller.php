@@ -11,17 +11,25 @@ class kolore_histroriala_controller extends Controller
     
     public function getAll()
     {
-        $belajar = Kolore_historiala::all();
+        $belajar = Kolore_historiala::join('produktua', 'kolore_historiala.id_produktua', '=', 'produktua.id')
+                            ->select('kolore_historiala.*', 'produktua.izena as produktua_izena','produktua.marka as produktua_marka')
+                            ->get();
+
         if (!$belajar) {
             return response()->json(['Error' => "No hay resultados",], 404);
         } else {
             return response()->json($belajar, 200);
         }
+        
     }
 
     public function getById($id)
     {
-        $belajar = Kolore_historiala::find($id);
+        $belajar = Kolore_historiala::join('produktua', 'kolore_historiala.id_produktua', '=', 'produktua.id')
+                            ->select('kolore_historiala.*', 'produktua.izena as produktua_izena','produktua.marka as produktua_marka')
+                            ->where('kolore_historiala.id', $id)
+                            ->get();
+
         if (!$belajar) {
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         } else {

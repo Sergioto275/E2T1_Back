@@ -42,7 +42,6 @@ class txanda_controller extends Controller
         $registroExistente = Txanda::where([
             'mota' => $datos['mota'],
             'data' => $fechaData,
-            'kodea' => $datos['kodea'],
         ])
             ->whereDate('sortze_data', $fechaActual) // Comparación solo con la fecha
             ->first();

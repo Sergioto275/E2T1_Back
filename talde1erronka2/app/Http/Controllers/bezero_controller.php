@@ -32,7 +32,9 @@ class bezero_controller extends Controller
     public function insert(Request $request)
     {
         $datos=$request->all();
-            $data=["izena"=>$datos["izena"],"abizena"=>$datos["abizena"],"telefonoa"=>$datos["telefonoa"],"azal_sentikorra"=>$datos["azal_sentikorra"],"sortze_data"=>$datos["sortze_data"]];
+        date_default_timezone_set('Europe/Madrid');
+            $sortze_data = date("Y-m-d H:i:s");
+            $data=["izena"=>$datos["izena"],"abizena"=>$datos["abizena"],"telefonoa"=>$datos["telefonoa"],"azal_sentikorra"=>$datos["azal_sentikorra"],"sortze_data"=>$sortze_data];
             Bezero::insert($data);
             return response('', 201);
     }
@@ -42,10 +44,12 @@ class bezero_controller extends Controller
     {
         $datos = $request->all();
         $belajar = Bezero::find($datos['id']);
+        date_default_timezone_set('Europe/Madrid');
+            $eguneratze_data = date("Y-m-d H:i:s");
         if (!$belajar) {
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         } else {
-            Bezero::where('id', $datos['id'])->update(array("izena" => $datos["izena"], "abizena" => $datos["abizena"],"telefonoa" => $datos["telefonoa"], "eguneratze_data" => $datos["eguneratze_data"]));
+            Bezero::where('id', $datos['id'])->update(array("izena" => $datos["izena"], "abizena" => $datos["abizena"],"telefonoa" => $datos["telefonoa"], "eguneratze_data" => $eguneratze_data));
             return response('', 202);
         }
 

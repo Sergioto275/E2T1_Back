@@ -44,7 +44,30 @@ class langile_controller extends Controller
             Langile::where('id', $datos['id'])->update(array('izena'=>$datos['izena'],'abizenak'=>$datos['abizenak'],'kodea'=>$datos['kodea'],'eguneratze_data'=>$eguneratze_data));
             return response('', 202);
         }
+    }
 
+    public function langile_count($fecha){
+        if($fecha){
+            $data = $fecha;
+        }else{
+            date_default_timezone_set('Europe/Madrid');
+            $data =date("Y-m-d");
+        }
+        $fechaCarbon = Carbon::parse($data);
+        $eguna = $fechaCarbon->dayOfWeek;
+        $count = Langile::where('kodea', function ($query) use ($data, $eguna) {
+            $query->select('kodea')
+                ->from('ordutegia')
+                ->where('hasiera_data', '<=', $data)
+                ->where('amaiera_data', '>=', $data)
+                ->where('eguna', '=', $eguna)
+                ->where(function ($query) {
+                    $query->whereNull('ezabatze_data')
+                        ->orWhere('ezabatze_data', '0000-00-00');
+                });
+        })->count();
+        $count--;
+        return $count;
     }
 
     public function delete(Request $request){

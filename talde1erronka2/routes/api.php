@@ -31,6 +31,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //=========================================================================>
 
 Route::get("/langileak","App\Http\Controllers\langile_controller@getAll");
+Route::get("/langileak/count/{fecha}","App\Http\Controllers\langile_controller@langile_count");
 Route::get("/langilebyordutegi","App\Http\Controllers\langile_controller@getbyOrdutegi");
 Route::get('/langileak/{id}', [langile_controller::class, 'getById']);
 Route::post("/langileak","App\Http\Controllers\langile_controller@insert");
@@ -71,10 +72,11 @@ Route::delete("/produktuak","App\Http\Controllers\\produktua_controller@delete")
 //=========================================================================>
 
 Route::get("/hitzorduak","App\Http\Controllers\\hitzordu_controller@erakutzi");
-Route::get("/hitzorduakbydate/{data}","App\Http\Controllers\\hitzordu_controller@citasbydate");
+Route::get("/hitzorduak/{data}","App\Http\Controllers\\hitzordu_controller@citasbydate");
 Route::post("/hitzordu_eskuragarri","App\Http\Controllers\\hitzordu_controller@citas_diaponibles");
 Route::post("/hitzorduak","App\Http\Controllers\\hitzordu_controller@insert");
-Route::post("/hitzorduesleitu","App\Http\Controllers\\hitzordu_controller@asignar");
+Route::put("/hitzorduesleitu","App\Http\Controllers\\hitzordu_controller@asignar");
+Route::put("/hitzorduaamaitu","App\Http\Controllers\\hitzordu_controller@finalizar");
 Route::put("/hitzorduak","App\Http\Controllers\\hitzordu_controller@update");
 Route::delete("/hitzorduak","App\Http\Controllers\\hitzordu_controller@delete");
 
@@ -114,3 +116,18 @@ Route::get("/kolore/{id}","App\Http\Controllers\\kolore_histroriala_controller@g
 Route::post("/kolore","App\Http\Controllers\\kolore_histroriala_controller@insert");
 Route::put("/kolore","App\Http\Controllers\\kolore_histroriala_controller@update");
 Route::delete("/kolore","App\Http\Controllers\\kolore_histroriala_controller@delete");
+
+//=========================================================================>
+//== TRATAMENDUAK =========================================================>
+//=========================================================================>
+
+Route::get("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@erakutzi");
+Route::post("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@insert");
+Route::put("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@update");
+Route::delete("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@delete");
+
+//=========================================================================>
+//== TRATAMENDUAK =========================================================>
+//=========================================================================>
+
+Route::post("/ticket_lerro","App\Http\Controllers\\ticket_lerro_controller@insert");

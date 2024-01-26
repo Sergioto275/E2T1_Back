@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Produktua extends Model
+class Produktu_Mugimendua extends Model
 {
-    protected $table = 'produktua';
+    protected $table = 'produktu_mugimendua';
     public $timestamps = false;
 
     protected $fillable = [
         'izena',
-        'deskribapena',
-        'id_kategoria',
-        'marka',
-        'stock',
-        'stock_alerta',
+        'id_produktua',
+        'id_langilea',
+        'data',
+        'kopurua',
         'sortze_data',
         'eguneratze_data',
         'ezabatze_data'

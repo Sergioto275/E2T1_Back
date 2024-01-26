@@ -66,7 +66,9 @@ Route::get("/produktuak","App\Http\Controllers\\produktua_controller@getAll");
 Route::get("/produktuak/{id}","App\Http\Controllers\\produktua_controller@getById");
 Route::post("/produktuak","App\Http\Controllers\\produktua_controller@insert");
 Route::put("/produktuak","App\Http\Controllers\\produktua_controller@update");
+Route::put("/produktuak/atera","App\Http\Controllers\\produktua_controller@actualizarStock");
 Route::delete("/produktuak","App\Http\Controllers\\produktua_controller@delete");
+
 //=========================================================================>
 //== HITZORDUAK ===========================================================>
 //=========================================================================>

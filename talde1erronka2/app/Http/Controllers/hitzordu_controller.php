@@ -8,6 +8,7 @@ use App\Models\Ordutegia;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Error;
+use Illuminate\Support\Facades\DB;
 
 class hitzordu_controller extends Controller
 {

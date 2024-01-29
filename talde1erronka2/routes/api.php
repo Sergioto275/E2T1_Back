@@ -124,6 +124,7 @@ Route::delete("/kolore","App\Http\Controllers\\kolore_histroriala_controller@del
 //=========================================================================>
 
 Route::get("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@erakutzi");
+Route::get("/tratamenduByLangile/{group}","App\Http\Controllers\\tratamenduak_controller@tratamientos_groupby_langile");
 Route::post("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@insert");
 Route::put("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@update");
 Route::delete("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@delete");

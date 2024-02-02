@@ -143,3 +143,13 @@ Route::get("/kategoriaTratamendu","App\Http\Controllers\\kategoriaTratamendu_con
 // Route::post("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@insert");
 // Route::put("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@update");
 // Route::delete("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@delete");
+
+//=========================================================================>
+//== TRATAMENDU KATEGORIAK ================================================>
+//=========================================================================>
+
+Route::get("/devolver","App\Http\Controllers\\devolver_controller@erakutzi");
+Route::get("/devolver/{id}","App\Http\Controllers\\devolver_controller@filterbyid");
+Route::put("/devolver","App\Http\Controllers\\devolver_controller@eguneratu");
+Route::post("/devolver","App\Http\Controllers\\devolver_controller@insertar");
+Route::put("/devolverfin","App\Http\Controllers\\devolver_controller@devolver");

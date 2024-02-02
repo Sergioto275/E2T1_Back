@@ -29,7 +29,7 @@ class devolver_controller extends Controller
         }else{
             date_default_timezone_set('Europe/Madrid');
             $eguneratze_data = date("Y-m-d H:i:s");
-            DevolverMaterial::where('id',$datos['id'])->update(array("id_langilea"=>$datos["id_langilea"],"id_materiala"=>$datos["id_materiala"],"hasiera_data"=>$datos["hasiera_data"],"eguneratze_data"=>$eguneratze_data));
+            DevolverMaterial::where('id',$datos['id'])->update(array("id_langilea"=>$datos["id_langilea"],"id_materiala"=>$datos["id_materiala"],"eguneratze_data"=>$eguneratze_data));
             return response()->json("Se ha insertado", 200);
         }
     }

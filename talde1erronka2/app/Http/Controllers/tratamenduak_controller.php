@@ -46,7 +46,7 @@ class tratamenduak_controller extends Controller
                     ->orWhere('kategoria_tratamendu.ezabatze_data', '0000-00-00 00:00:00');
             })
             ->where('langilea.kodea', '=', $grupo)
-            ->select('langilea.izena as langile_izena', 'kategoria_tratamendu.izena as kategoria_izena', DB::raw('count(kategoria_tratamendu.id) as cant'))
+            ->select('langilea.id as langile_id', 'langilea.izena as langile_izena','kategoria_tratamendu.id as kategoria_id' ,'kategoria_tratamendu.izena as kategoria_izena', DB::raw('count(kategoria_tratamendu.id) as cant'))
             ->groupBy('langilea.id', 'langilea.izena', 'kategoria_tratamendu.id', 'kategoria_tratamendu.izena')
             ->get();
         if (!$resultados) {
@@ -58,7 +58,7 @@ class tratamenduak_controller extends Controller
 
     public function insert(Request $request){
         $datos=$request->all();
-        Tratamenduak::insert(array('izena'=>$datos["izena"],"etxeko_prezioa"=>$datos["etxeko_prezioa"],"kanpoko_prezioa"=>$datos["kanpoko_prezioa"]));
+        Tratamenduak::insert(array('izena'=>$datos["izena"],"etxeko_prezioa"=>$datos["etxeko_prezioa"],"kanpoko_prezioa"=>$datos["kanpoko_prezioa"],"id_katTratamendu"=>$datos["id_katTratamendu"]));
         return response('', 201);
     }
 
@@ -70,7 +70,7 @@ class tratamenduak_controller extends Controller
         }else{
             date_default_timezone_set('Europe/Madrid');
             $eguneratze_data = date("Y-m-d H:i:s");
-            Tratamenduak::where('id', $datos['id'])->update(array('izena'=>$datos["izena"],"etxeko_prezioa"=>$datos["etxeko_prezioa"],"kanpoko_prezioa"=>$datos["kanpoko_prezioa"],"eguneratze_data"=>$eguneratze_data));
+            Tratamenduak::where('id', $datos['id'])->update(array('izena'=>$datos["izena"],"etxeko_prezioa"=>$datos["etxeko_prezioa"],"kanpoko_prezioa"=>$datos["kanpoko_prezioa"],"id_katTratamendu"=>$datos["id_katTratamendu"],"eguneratze_data"=>$eguneratze_data));
             return response('', 200);
         }
     }

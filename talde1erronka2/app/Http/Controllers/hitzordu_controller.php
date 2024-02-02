@@ -12,8 +12,12 @@ use Illuminate\Support\Facades\DB;
 
 class hitzordu_controller extends Controller
 {
-    public function erakutzi(){
-        $datos = Hitzordu::all();
+    public function erakutzi()
+    {
+        $datos = Hitzordu::leftJoin('langilea', 'hitzordua.id_langilea', '=', 'langilea.id')
+                        ->select('hitzordua.*', 'langilea.kodea','langilea.izena as l_izena')
+                        ->get();
+
         if ($datos->isEmpty()) {
             return response()->json(["Error" => "Ez dira daturik aurkitu"], 404);
         } else {

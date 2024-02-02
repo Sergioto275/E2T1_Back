@@ -70,6 +70,19 @@ Route::put("/produktuak/atera","App\Http\Controllers\\produktua_controller@actua
 Route::delete("/produktuak","App\Http\Controllers\\produktua_controller@delete");
 
 //=========================================================================>
+//== MATERIALA ============================================================>
+//=========================================================================>
+
+Route::get("/materiala","App\Http\Controllers\\materiala_controller@getAll");
+Route::get("/materiala/{id}","App\Http\Controllers\\materiala_controller@getById");
+Route::get("/materialalibre","App\Http\Controllers\\materiala_controller@getLibre");
+Route::post("/materiala","App\Http\Controllers\\materiala_controller@insert");
+Route::put("/materiala","App\Http\Controllers\\materiala_controller@update");
+Route::put("/materiala/atera","App\Http\Controllers\\materiala_controller@atera");
+Route::put("/materiala/bueltatu","App\Http\Controllers\\materiala_controller@bueltatu");
+Route::delete("/materiala","App\Http\Controllers\\materiala_controller@delete");
+
+//=========================================================================>
 //== HITZORDUAK ===========================================================>
 //=========================================================================>
 

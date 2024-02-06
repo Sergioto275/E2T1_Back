@@ -88,6 +88,7 @@ Route::delete("/materiala","App\Http\Controllers\\materiala_controller@delete");
 
 Route::get("/hitzorduak","App\Http\Controllers\\hitzordu_controller@erakutzi");
 Route::get("/hitzorduak/{data}","App\Http\Controllers\\hitzordu_controller@citasbydate");
+Route::get("/hitzorduHome","App\Http\Controllers\\hitzordu_controller@home_hitzordu");
 Route::post("/hitzordu_eskuragarri","App\Http\Controllers\\hitzordu_controller@citas_diaponibles");
 Route::post("/hitzorduak","App\Http\Controllers\\hitzordu_controller@insert");
 Route::put("/hitzorduesleitu","App\Http\Controllers\\hitzordu_controller@asignar");

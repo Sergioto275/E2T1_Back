@@ -12,6 +12,56 @@ use Illuminate\Support\Facades\DB;
 
 class hitzordu_controller extends Controller
 {
+    function agregarEvento($array, $fecha, $evento) {
+        $fechaCarbon = Carbon::parse($fecha);
+        $ano = $fechaCarbon->year;
+        $mes = $fechaCarbon->month;
+        $dia = $fechaCarbon->day;
+    
+        // Asegurarse de que el año esté presente en el array
+        if (!isset($array[$ano])) {
+            $array[$ano] = [];
+        }
+    
+        // Asegurarse de que el mes esté presente en el año
+        if (!isset($array[$ano][$mes])) {
+            $array[$ano][$mes] = [];
+        }
+    
+        // Asegurarse de que el día esté presente en el mes
+        if (!isset($array[$ano][$mes][$dia])) {
+            $array[$ano][$mes][$dia] = [];
+        }
+    
+        // Añadir el evento al día correspondiente
+        $array[$ano][$mes][$dia][] = $evento;
+    
+        return $array;
+    }
+
+    public function home_hitzordu(){
+        $datos = Hitzordu::where(function ($query) {
+            $query->whereNull('ezabatze_data')
+                ->orWhere('ezabatze_data', '0000-00-00');
+        })->get();
+
+        if ($datos->isEmpty()) {
+            return response()->json(["Error" => "Ez dira daturik aurkitu"], 404);
+        } else {
+            $citas = [];
+            foreach ($datos as $dato) {
+                $event = [
+                    'startTime' => $dato->hasiera_ordua,
+                    'endTime' => $dato->amaiera_ordua,
+                    'text' => 'El cliente: ' . $dato->izena . '; Descripcion de la cita: ' . $dato->deskribapena,
+                    'link' => ''
+                ];
+                $citas = $this->agregarEvento($citas, $dato->data, $event);
+            }
+
+            return response()->json($citas, 200);
+        }
+    }
     public function erakutzi()
     {
         $datos = Hitzordu::leftJoin('langilea', 'hitzordua.id_langilea', '=', 'langilea.id')

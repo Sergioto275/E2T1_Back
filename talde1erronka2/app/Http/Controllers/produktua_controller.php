@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class produktua_controller extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/produktuak",
+     *     @OA\Response(response="200", description="Display a listing of produktuak.")
+     * )
+     */
     public function getAll(){
         $belajar = Produktua::join('kategoria', 'produktua.id_kategoria', '=', 'kategoria.id')
                             ->select('produktua.*', 'kategoria.izena as kategoria_izena')

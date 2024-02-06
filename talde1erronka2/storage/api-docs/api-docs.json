@@ -1,0 +1,19 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/produktuak": {
+            "get": {
+                "operationId": "4320f85ddae67a259b19378565ec00d7",
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of produktuak."
+                    }
+                }
+            }
+        }
+    }
+}

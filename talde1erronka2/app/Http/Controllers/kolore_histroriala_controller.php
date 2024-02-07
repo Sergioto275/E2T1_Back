@@ -42,7 +42,7 @@ class kolore_histroriala_controller extends Controller
         date_default_timezone_set('Europe/Madrid');
         $sortze_data = date("Y-m-d H:i:s");
         $datos=$request->all();
-            $data=["id_bezeroa"=>$datos["id_bezeroa"],"id_produktua"=>$datos["id_produktua"],"data"=>$datos["data"],"kantitatea"=>$datos["kantitatea"],"bolumena"=>$datos["bolumena"],"oharrak"=>$datos["oharrak"],"sortze_data"=>$sortze_data];
+            $data=["id_bezeroa"=>$datos["id_bezeroa"],"id_produktua"=>$datos["id_produktua"],"data"=>$sortze_data,"kantitatea"=>$datos["kantitatea"],"bolumena"=>$datos["bolumena"],"oharrak"=>$datos["oharrak"],"sortze_data"=>$sortze_data];
             Kolore_historiala::insert($data);
             return response('', 201);
     }

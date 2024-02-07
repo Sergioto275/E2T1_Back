@@ -85,7 +85,6 @@ Route::delete("/materiala","App\Http\Controllers\\materiala_controller@delete");
 Route::get("/hitzorduak","App\Http\Controllers\\hitzordu_controller@erakutsi");
 Route::get("/hitzorduak/{data}","App\Http\Controllers\\hitzordu_controller@citasbydate");
 Route::get("/hitzorduHome","App\Http\Controllers\\hitzordu_controller@home_hitzordu");
-Route::post("/hitzordu_eskuragarri","App\Http\Controllers\\hitzordu_controller@citas_diaponibles");
 Route::post("/hitzorduak","App\Http\Controllers\\hitzordu_controller@insert");
 Route::put("/hitzorduesleitu","App\Http\Controllers\\hitzordu_controller@asignar");
 Route::put("/hitzorduaamaitu","App\Http\Controllers\\hitzordu_controller@finalizar");
@@ -149,10 +148,10 @@ Route::post("/ticket_lerro","App\Http\Controllers\\ticket_lerro_controller@inser
 //== TRATAMENDU KATEGORIAK ================================================>
 //=========================================================================>
 
-Route::get("/kategoriaTratamendu","App\Http\Controllers\\kategoriaTratamendu_controller@erakutsi");
-// Route::post("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@insert");
-// Route::put("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@update");
-// Route::delete("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@delete");
+Route::get("/kategoriaTratamendu","App\Http\Controllers\\kategoriaTratamendu_controller@erakutzi");
+Route::post("/kategoriaTratamendu","App\Http\Controllers\\kategoriaTratamendu_controller@insert");
+Route::put("/kategoriaTratamendu","App\Http\Controllers\\kategoriaTratamendu_controller@update");
+Route::delete("/kategoriaTratamendu","App\Http\Controllers\\kategoriaTratamendu_controller@delete");
 
 //=========================================================================>
 //== DEVOLVER =============================================================>

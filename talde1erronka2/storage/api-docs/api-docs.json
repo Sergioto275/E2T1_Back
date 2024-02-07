@@ -5,15 +5,2024 @@
         "version": "0.1"
     },
     "paths": {
+        "/bezeroak": {
+            "get": {
+                "tags": [
+                    "Bezeroak"
+                ],
+                "description": "Bezero guztiak bueltatzen ditu.",
+                "operationId": "cd5ca9ede919b0fb556d90d11a8beed0",
+                "responses": {
+                    "200": {
+                        "description": "Bezero guztiak bueltatu ditu."
+                    },
+                    "404": {
+                        "description": "Ez du bezerorik topatu."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Bezeroak"
+                ],
+                "description": "Adierazitako informazioaren arabera bezero bat eguneratzen du datubasean.",
+                "operationId": "eb6c2d921b1bbe495f9529df81536fd1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Produktuaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "izena": {
+                                        "description": "Produktuaren izena",
+                                        "type": "string"
+                                    },
+                                    "deskribapena": {
+                                        "description": "Produktuaren deskribapena",
+                                        "type": "string"
+                                    },
+                                    "id_kategoria": {
+                                        "description": "Produktuaren kategoriaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "marka": {
+                                        "description": "Produktuaren marka",
+                                        "type": "string"
+                                    },
+                                    "stock": {
+                                        "description": "Produktuaren stock kantitatea",
+                                        "type": "integer"
+                                    },
+                                    "stock_alerta": {
+                                        "description": "Alerta aktibatzen duen stock-aren gutxitze-maila",
+                                        "type": "integer"
+                                    },
+                                    "eguneratze_data": {
+                                        "description": "Produktuaren eguneratze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Bezeroa ondo eguneratu da datubasean."
+                    },
+                    "404": {
+                        "description": "Ez du bezerorik topatu ID horrekin."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Bezeroak"
+                ],
+                "description": "Adierazitako informazioarekin bezero berri bat txertatzen du datubasean.",
+                "operationId": "35a470230c0833ba707757ca5547ccda",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "izena": {
+                                        "description": "Bezeroaren izena",
+                                        "type": "string"
+                                    },
+                                    "abizena": {
+                                        "description": "Bezeroaren abizena",
+                                        "type": "string"
+                                    },
+                                    "telefonoa": {
+                                        "description": "Bezeroaren telefono zenbakia",
+                                        "type": "string"
+                                    },
+                                    "piel": {
+                                        "description": "Bezeroaren piel (Adibidez, 'E' edo 'H')",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Bezeroa ondo txertatu da datubasean."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Bezeroak"
+                ],
+                "description": "Adierazitako ID-a erabilita datubasean bezeroaren ezabatze logikoa egiten du.",
+                "operationId": "44a76d7e9146e12c61d22d0846dd8ed6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Elementuaren ID-a",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Produktuak ondo ezabatu dira datubasean."
+                    },
+                    "404": {
+                        "description": "Ez dago produkturik ID horrekin."
+                    }
+                }
+            }
+        },
+        "/bezeroak/{id}": {
+            "get": {
+                "tags": [
+                    "Bezeroak"
+                ],
+                "description": "Adierazitako ID-aren arabera bezero bat bueltatzen du.",
+                "operationId": "9e6b511412725c105566530b4bcaf888",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bezeroaren ID-a",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Aukeratutako bezeroa bueltatzen du."
+                    },
+                    "404": {
+                        "description": "Ez du bezerorik topatu ID horrekin."
+                    }
+                }
+            }
+        },
+        "/devolver": {
+            "get": {
+                "tags": [
+                    "Materiala bueltatu"
+                ],
+                "description": "Materiala_erabiliko erregistro guztiak bueltatzen ditu.",
+                "operationId": "ed7744be569e0750860d436646592bf6",
+                "responses": {
+                    "200": {
+                        "description": "Erregistro guztiak bueltatu ditu."
+                    },
+                    "404": {
+                        "description": "Ez du erregistrorik topatu."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Materiala bueltatu"
+                ],
+                "description": "Adierazitako informazioaren arabera produktu bat eguneratzen du datubasean.",
+                "operationId": "f81e4e5b5c029d2012f32827e810b4a6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Jarduera ID-a",
+                                        "type": "integer"
+                                    },
+                                    "id_langilea": {
+                                        "description": "Langilearen ID-a",
+                                        "type": "integer"
+                                    },
+                                    "id_materiala": {
+                                        "description": "Materialaren ID-a",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Produktua ondo eguneratu da datubasean."
+                    },
+                    "404": {
+                        "description": "Ez du produkturik topatu ID horrekin."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Materiala bueltatu"
+                ],
+                "description": "Adierazitako informazioarekin erregistro berri bat txertatzen du datubasean.",
+                "operationId": "bb0e6611ef3ffb4c3876e7fec4244440",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_materiala": {
+                                        "description": "Materialaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "id_langilea": {
+                                        "description": "Langilearen ID-a",
+                                        "type": "integer"
+                                    },
+                                    "hasiera_data": {
+                                        "description": "Jardueraren hasierako data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "sortze_data": {
+                                        "description": "Jardueraren sortze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Produktua ondo txertatu da datubasean."
+                    }
+                }
+            }
+        },
+        "/devolver/{id}": {
+            "get": {
+                "tags": [
+                    "Materiala bueltatu"
+                ],
+                "description": "Adierazitako ID-aren arabera erregistro bat bueltatzen du.",
+                "operationId": "f9f5513669dc4dde2af9f1906f973cb8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Erregistroaren ID-a",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Aukeratutako erregistroa bueltatzen du."
+                    },
+                    "404": {
+                        "description": "Ez du erregistrorik topatu ID horrekin."
+                    }
+                }
+            }
+        },
+        "/kategoriak": {
+            "get": {
+                "tags": [
+                    "Kategoriak"
+                ],
+                "description": "Kategoria guztiak bueltatzen ditu.",
+                "operationId": "1cb3c6ea847381bce167d94fb131f013",
+                "responses": {
+                    "200": {
+                        "description": "Kategoria guztiak bueltatu ditu."
+                    },
+                    "404": {
+                        "description": "Ez du kategoriarik topatu."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Kategoriak"
+                ],
+                "description": "Adierazitako informazioaren arabera kategoria bat eguneratzen du datubasean.",
+                "operationId": "d6d613a7b44a5ce82a6f00abf770cfa9",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Kategoriaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "izena": {
+                                        "description": "Kategoriaren izena",
+                                        "type": "string"
+                                    },
+                                    "eguneratze_data": {
+                                        "description": "Kategoriaren eguneratze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Kategoria ondo eguneratu da datubasean."
+                    },
+                    "404": {
+                        "description": "Ez du kategoriarik topatu ID horrekin."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Kategoriak"
+                ],
+                "description": "Adierazitako informazioarekin kategoria berri bat txertatzen du datubasean.",
+                "operationId": "1485e42964ea5aed827f93f4b180ab3e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "izena": {
+                                        "description": "Kategoriaren izena",
+                                        "type": "string"
+                                    },
+                                    "sortze_data": {
+                                        "description": "Kategoriaren sortze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Kategoria ondo txertatu da datubasean."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Kategoriak"
+                ],
+                "description": "Adierazitako ID-a erabilita datubasean kategoriaren ezabatze logikoa egiten du.",
+                "operationId": "2b895f8cb46077b64ea3e0e5e3c5cadc",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Kategoriaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "ezabatze_data": {
+                                        "description": "Kategoriaren ezabatze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Kategoriak ondo ezabatu dira datubasean."
+                    },
+                    "404": {
+                        "description": "Ez dago kategoriarik ID horrekin."
+                    }
+                }
+            }
+        },
+        "/kategoriak/{id}": {
+            "get": {
+                "tags": [
+                    "Kategoriak"
+                ],
+                "description": "Adierazitako ID-aren arabera kategoria bat bueltatzen du.",
+                "operationId": "25c2ef3d29d9388d6abe553745ceccb2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Kategoriaren ID-a",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Aukeratutako kategoria bueltatzen du."
+                    },
+                    "404": {
+                        "description": "Ez du kategoriarik topatu ID horrekin."
+                    }
+                }
+            }
+        },
+        "/kolore": {
+            "get": {
+                "tags": [
+                    "Koloreak"
+                ],
+                "description": "Kolore guztiak bueltatzen ditu.",
+                "operationId": "80b12607f464d1ee3f6e3031dcbd98ff",
+                "responses": {
+                    "200": {
+                        "description": "Kolore guztiak bueltatu ditu."
+                    },
+                    "404": {
+                        "description": "Ez du kolorerik topatu."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Koloreak"
+                ],
+                "description": "Adierazitako informazioaren arabera kolore bat eguneratzen du datubasean.",
+                "operationId": "757debd722d583f9c962e6a69d7c4ad6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Transakzioaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "data": {
+                                        "description": "Transakzioaren data",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "id_bezeroa": {
+                                        "description": "Bezeroaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "id_produktua": {
+                                        "description": "Produktuaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "kantitatea": {
+                                        "description": "Produktu kantitatea",
+                                        "type": "integer"
+                                    },
+                                    "bolumena": {
+                                        "description": "Kolorearen bolumena",
+                                        "type": "string"
+                                    },
+                                    "oharrak": {
+                                        "description": "Oharrak edo komentarioak",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Kolorea ondo eguneratu da datubasean."
+                    },
+                    "404": {
+                        "description": "Ez du kolorerik topatu ID horrekin."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Koloreak"
+                ],
+                "description": "Adierazitako informazioarekin kolore berri bat txertatzen du datubasean.",
+                "operationId": "b9cb7f8e798104639eab3fa559a41ec9",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "data": {
+                                        "description": "Transakzioaren data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "id_bezeroa": {
+                                        "description": "Bezeroaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "id_produktua": {
+                                        "description": "Produktuaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "kantitatea": {
+                                        "description": "Produktu kantitatea",
+                                        "type": "integer"
+                                    },
+                                    "bolumena": {
+                                        "description": "Produktuaren bolumena",
+                                        "type": "integer"
+                                    },
+                                    "oharrak": {
+                                        "description": "Oharrak edo komenlarioak",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Produktua ondo txertatu da datubasean."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Koloreak"
+                ],
+                "description": "Adierazitako ID-a erabilita datubasean koloreen ezabatze logikoa egiten du.",
+                "operationId": "bd72f1aef8c93e2136e945dcdf3b0420",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Elementuaren ID-a",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Koloreak ondo ezabatu dira datubasean."
+                    },
+                    "404": {
+                        "description": "Ez dago kolorerik ID horrekin."
+                    }
+                }
+            }
+        },
+        "/kolore/{id}": {
+            "get": {
+                "tags": [
+                    "Koloreak"
+                ],
+                "description": "Adierazitako ID-aren arabera kolore bat bueltatzen du.",
+                "operationId": "5b7c372455adcaf7f1bafc2f67ed9f77",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Kolorearen ID-a",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Aukeratutako kolorea bueltatzen du."
+                    },
+                    "404": {
+                        "description": "Ez du kolorerik topatu ID horrekin."
+                    }
+                }
+            }
+        },
+        "/langileak": {
+            "get": {
+                "tags": [
+                    "Langileak"
+                ],
+                "description": "Produktu guztiak bueltatzen ditu.",
+                "operationId": "fee29236206318ec9a6efc382e8ac544",
+                "responses": {
+                    "200": {
+                        "description": "Langile guztiak bueltatu ditu."
+                    },
+                    "404": {
+                        "description": "Ez du langilerik topatu."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Langileak"
+                ],
+                "description": "Adierazitako informazioaren arabera produktu bat eguneratzen du datubasean.",
+                "operationId": "9a6c0a26c315ce83c0363a0f0b78639c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Langileen ID-a",
+                                        "type": "integer"
+                                    },
+                                    "izena": {
+                                        "description": "Langileen izena",
+                                        "type": "string"
+                                    },
+                                    "abizenak": {
+                                        "description": "Langileen abizenak",
+                                        "type": "string"
+                                    },
+                                    "kodea": {
+                                        "description": "Langilearen kodea",
+                                        "type": "string"
+                                    },
+                                    "eguneratze_data": {
+                                        "description": "Langilearen eguneratze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Langilea ondo eguneratu da datubasean."
+                    },
+                    "404": {
+                        "description": "Ez du langilerik topatu ID horrekin."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Langileak"
+                ],
+                "description": "Adierazitako informazioarekin langile berri bat txertatzen du datubasean.",
+                "operationId": "c51afba98a5f239e2cf2f51569ae990f",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "izena": {
+                                        "description": "Langileen izena",
+                                        "type": "string"
+                                    },
+                                    "abizenak": {
+                                        "description": "Langileen abizenak",
+                                        "type": "string"
+                                    },
+                                    "kodea": {
+                                        "description": "Langilearen kodea",
+                                        "type": "string"
+                                    },
+                                    "sortze_data": {
+                                        "description": "Langilearen sortze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Langilea ondo txertatu da datubasean."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Langileak"
+                ],
+                "description": "Adierazitako ID-a erabilita datubasean langileen ezabatze logikoa egiten du.",
+                "operationId": "ba63642c54b50de8104f617c2aa700ac",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Langileen ID-a",
+                                        "type": "integer"
+                                    },
+                                    "ezabatze_data": {
+                                        "description": "Langilearen ezabatze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Langileak ondo ezabatu dira datubasean."
+                    },
+                    "404": {
+                        "description": "Ez dago langilerik ID horrekin."
+                    }
+                }
+            }
+        },
+        "/langileak/{id}": {
+            "get": {
+                "tags": [
+                    "Langileak"
+                ],
+                "description": "Adierazitako ID-aren arabera langile bat bueltatzen du.",
+                "operationId": "b41bcf0d192a8f56b3de1150b7683909",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Langilearen ID-a",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Aukeratutako langilea bueltatzen du."
+                    },
+                    "404": {
+                        "description": "Ez du langilerik topatu ID horrekin."
+                    }
+                }
+            }
+        },
+        "/langileak/count/{fecha}": {
+            "get": {
+                "tags": [
+                    "Langileak"
+                ],
+                "description": "Adierazitako datan zenbat langile dauden bueltatzen du.",
+                "operationId": "fbecfd3994a57cdd3c022023174e346c",
+                "parameters": [
+                    {
+                        "name": "fecha",
+                        "in": "path",
+                        "description": "Data bat",
+                        "required": true,
+                        "schema": {
+                            "type": "date"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Aukeratutako langile kantitatea bueltatzen du."
+                    }
+                }
+            }
+        },
+        "/materiala": {
+            "get": {
+                "tags": [
+                    "Materiala"
+                ],
+                "description": "Material guztia bueltatzen ditu.",
+                "operationId": "9c777fb4b08f9c3fa9dd59e1f5d074a2",
+                "responses": {
+                    "200": {
+                        "description": "Material guztia bueltatu ditu."
+                    },
+                    "404": {
+                        "description": "Ez du materialik topatu."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Materiala"
+                ],
+                "description": "Adierazitako informazioaren arabera material bat eguneratzen du datubasean.",
+                "operationId": "d59e0a5b14eee50864769016519ba2a1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Materialaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "etiketa": {
+                                        "description": "Materialaren etiketa",
+                                        "type": "string"
+                                    },
+                                    "izena": {
+                                        "description": "Materialaren izena",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Materiala ondo eguneratu da datubasean."
+                    },
+                    "404": {
+                        "description": "Ez du materialik topatu ID horrekin."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Materiala"
+                ],
+                "description": "Adierazitako informazioarekin material berri bat txertatzen du datubasean.",
+                "operationId": "71e4a650c755d8d8ded95a10cb02d8cd",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "etiketa": {
+                                        "description": "Materialaren etiketa",
+                                        "type": "string"
+                                    },
+                                    "izena": {
+                                        "description": "Materialaren izena",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Produktua ondo txertatu da datubasean."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Materiala"
+                ],
+                "description": "Adierazitako ID-a erabilita datubasean materialaren ezabatze logikoa egiten du.",
+                "operationId": "de1f74c7397f5810ccbd7c955c223461",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Ezabatzeko produktuaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "ezabatze_data": {
+                                        "description": "Ezabatze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Materiala ondo ezabatu da datubasean."
+                    },
+                    "404": {
+                        "description": "Ez dago materialik ID horrekin."
+                    }
+                }
+            }
+        },
+        "/materiala/{id}": {
+            "get": {
+                "tags": [
+                    "Materiala"
+                ],
+                "description": "Adierazitako ID-aren arabera material bat bueltatzen du.",
+                "operationId": "0d5c698b58b5c4226ccf721f9c1711a8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Materialaren ID-a",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Aukeratutako materiala bueltatzen du."
+                    },
+                    "404": {
+                        "description": "Ez du materialik topatu ID horrekin."
+                    }
+                }
+            }
+        },
+        "/materialalibre": {
+            "get": {
+                "tags": [
+                    "Materiala"
+                ],
+                "description": "Libre dagoen material guztia.",
+                "operationId": "654735585e53376e270223d32e3574ca",
+                "responses": {
+                    "200": {
+                        "description": "Material guztia bueltatu ditu."
+                    },
+                    "404": {
+                        "description": "Ez du materialik topatu."
+                    }
+                }
+            }
+        },
+        "/materiala/atera": {
+            "put": {
+                "tags": [
+                    "Materiala"
+                ],
+                "description": "Adierazitako langilea zein material atera duen erregistratzen du.",
+                "operationId": "f0c9816252e0834c798cf6842108de6d",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Langilearen ID-a",
+                                        "type": "integer"
+                                    },
+                                    "materiala": {
+                                        "description": "Materialen zerrenda",
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id": {
+                                                    "description": "Materialaren ID-a",
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Erregistroa ondo txertatu da datubasean."
+                    },
+                    "404": {
+                        "description": "Ez du erregistrorik topatu ID horrekin."
+                    }
+                }
+            }
+        },
+        "/materiala/bueltatu": {
+            "put": {
+                "tags": [
+                    "Materiala"
+                ],
+                "description": "Zein material bueltatu den erregistratzen du.",
+                "operationId": "798e0afff52d3c136e01dcde849daf95",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "materiala": {
+                                        "description": "Materialen zerrenda",
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id": {
+                                                    "description": "Materialaren ID-a",
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Erregistroa ondo txertatu da datubasean."
+                    },
+                    "404": {
+                        "description": "Ez du erregistrorik topatu ID horrekin."
+                    }
+                }
+            }
+        },
+        "/ordutegiak": {
+            "get": {
+                "tags": [
+                    "Ordutegiak"
+                ],
+                "description": "Ordutegi guztiak bueltatzen ditu.",
+                "operationId": "b61fc3251d8f9de5d5e98a316671f308",
+                "responses": {
+                    "200": {
+                        "description": "Ordutegi guztiak bueltatu ditu."
+                    },
+                    "404": {
+                        "description": "Ez du ordutegirik topatu."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Ordutegiak"
+                ],
+                "description": "Adierazitako informazioaren arabera ordutegi bat eguneratzen du datubasean.",
+                "operationId": "1ae93053ae8ec768bd7bb6f65e7996a4",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Ordutegiaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "kodea": {
+                                        "description": "Taldearen kodea",
+                                        "type": "string"
+                                    },
+                                    "eguna": {
+                                        "description": "Ordutegiaren eguna (1-7)",
+                                        "type": "integer"
+                                    },
+                                    "hasiera_data": {
+                                        "description": "Ordutegiaren hasierako data",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "amaiera_data": {
+                                        "description": "Ordutegiaren amaierako data",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "hasiera_ordua": {
+                                        "description": "Ordutegiaren hasierako ordua",
+                                        "type": "string",
+                                        "format": "time"
+                                    },
+                                    "amaiera_ordua": {
+                                        "description": "Ordutegiaren amaierako ordua",
+                                        "type": "string",
+                                        "format": "time"
+                                    },
+                                    "eguneratze_data": {
+                                        "description": "Ordutegiaren eguneratze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Ordutegia ondo eguneratu da datubasean."
+                    },
+                    "404": {
+                        "description": "Ez du ordutegirik topatu ID horrekin."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Ordutegiak"
+                ],
+                "description": "Adierazitako informazioarekin ordutegi berri bat txertatzen du datubasean.",
+                "operationId": "1034d69d9bbb36d48ac420ee62667b22",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "kodea": {
+                                        "description": "Taldearen kodea",
+                                        "type": "string"
+                                    },
+                                    "eguna": {
+                                        "description": "Ordutegiaren eguna (1-7)",
+                                        "type": "integer"
+                                    },
+                                    "hasiera_data": {
+                                        "description": "Ordutegiaren hasierako data",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "amaiera_data": {
+                                        "description": "Ordutegiaren amaierako data",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "hasiera_ordua": {
+                                        "description": "Ordutegiaren hasierako ordua",
+                                        "type": "string",
+                                        "format": "time"
+                                    },
+                                    "amaiera_ordua": {
+                                        "description": "Ordutegiaren amaierako ordua",
+                                        "type": "string",
+                                        "format": "time"
+                                    },
+                                    "sortze_data": {
+                                        "description": "Ordutegiaren sortze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Ordutegia ondo txertatu da datubasean."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Ordutegiak"
+                ],
+                "description": "Adierazitako ID-a erabilita datubasean ordutegien ezabatze logikoa egiten du.",
+                "operationId": "608d3439af9b23ac8d84e4bfd3d2f454",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Ezabatzeko ordutegiaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "ezabatze_data": {
+                                        "description": "Ezabatze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ordutegiak ondo ezabatu dira datubasean."
+                    },
+                    "404": {
+                        "description": "Ez dago ordutegirik ID horrekin."
+                    }
+                }
+            }
+        },
+        "/ordutegiak/{id}": {
+            "get": {
+                "tags": [
+                    "Ordutegiak"
+                ],
+                "description": "Adierazitako ID-aren arabera ordutegi bat bueltatzen du.",
+                "operationId": "216d71b4d7a3006a212413c0da4c55e3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ordutegiaren ID-a",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Aukeratutako ordutegia bueltatzen du."
+                    },
+                    "404": {
+                        "description": "Ez du ordutegirik topatu ID horrekin."
+                    }
+                }
+            }
+        },
         "/produktuak": {
             "get": {
+                "tags": [
+                    "Produktuak"
+                ],
+                "description": "Produktu guztiak bueltatzen ditu.",
                 "operationId": "4320f85ddae67a259b19378565ec00d7",
                 "responses": {
                     "200": {
-                        "description": "Display a listing of produktuak."
+                        "description": "Produktu guztiak bueltatu ditu."
+                    },
+                    "404": {
+                        "description": "Ez du produkturik topatu."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Produktuak"
+                ],
+                "description": "Adierazitako informazioaren arabera produktu bat eguneratzen du datubasean.",
+                "operationId": "5d2f9b8d2a461bcdea4672bc302f0e0e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Produktuaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "izena": {
+                                        "description": "Produktuaren izena",
+                                        "type": "string"
+                                    },
+                                    "deskribapena": {
+                                        "description": "Produktuaren deskribapena",
+                                        "type": "string"
+                                    },
+                                    "id_kategoria": {
+                                        "description": "Produktuaren kategoriaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "marka": {
+                                        "description": "Produktuaren marka",
+                                        "type": "string"
+                                    },
+                                    "stock": {
+                                        "description": "Produktuaren stock kantitatea",
+                                        "type": "integer"
+                                    },
+                                    "stock_alerta": {
+                                        "description": "Alerta aktibatzen duen stock-aren gutxitze-maila",
+                                        "type": "integer"
+                                    },
+                                    "eguneratze_data": {
+                                        "description": "Produktuaren eguneratze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Produktua ondo eguneratu da datubasean."
+                    },
+                    "404": {
+                        "description": "Ez du produkturik topatu ID horrekin."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Produktuak"
+                ],
+                "description": "Adierazitako informazioarekin produktu berri bat txertatzen du datubasean.",
+                "operationId": "f3b23fe97482dfda5edf79109e584e5e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "izena": {
+                                        "description": "Produktuaren izena",
+                                        "type": "string"
+                                    },
+                                    "deskribapena": {
+                                        "description": "Produktuaren deskribapena",
+                                        "type": "string"
+                                    },
+                                    "id_kategoria": {
+                                        "description": "Kategoriaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "marka": {
+                                        "description": "Produktuaren marka",
+                                        "type": "string"
+                                    },
+                                    "stock": {
+                                        "description": "Hasierako stock-a",
+                                        "type": "integer"
+                                    },
+                                    "stock_alerta": {
+                                        "description": "Stock-a alertaren kantitatea",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Produktua ondo txertatu da datubasean."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Produktuak"
+                ],
+                "description": "Adierazitako ID-a erabilita datubasean produktuen ezabatze logikoa egiten du.",
+                "operationId": "b15018d813a1a88c8b0b8fa683023a1e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Ezabatzeko produktuaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "ezabatze_data": {
+                                        "description": "Ezabatze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Produktuak ondo ezabatu dira datubasean."
+                    },
+                    "404": {
+                        "description": "Ez dago produkturik ID horrekin."
+                    }
+                }
+            }
+        },
+        "/produktuak/{id}": {
+            "get": {
+                "tags": [
+                    "Produktuak"
+                ],
+                "description": "Adierazitako ID-aren arabera produktu bat bueltatzen du.",
+                "operationId": "cc87e73839817f34f41a806a3aa16bda",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Produktuaren ID-a",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Aukeratutako produktua bueltatzen du."
+                    },
+                    "404": {
+                        "description": "Ez du produkturik topatu ID horrekin."
+                    }
+                }
+            }
+        },
+        "/produktuak/atera": {
+            "put": {
+                "tags": [
+                    "Produktuak"
+                ],
+                "description": "Adierazitako informazioa erabilita datubasean produktuen stock-a eguneratzen da eta produktuen mugimendua erregistratzen da.",
+                "operationId": "d5ee45c9d3106213e439b1ab8b971d3b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Transakzioaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "produktuak": {
+                                        "description": "Produktu kopurua eta haien ID-ak",
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id": {
+                                                    "description": "Produktuaren ID-a",
+                                                    "type": "integer"
+                                                },
+                                                "kantitate": {
+                                                    "description": "Produktu kopurua",
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Produktuak ondo eguneratu dira."
+                    },
+                    "404": {
+                        "description": "Zenbait produktu ez dira eguneratu eta produktu horien zerrenda."
+                    },
+                    "400": {
+                        "description": "Adierazitako informazioaren formatua ez da zuzena."
+                    }
+                }
+            }
+        },
+        "/taldeak": {
+            "get": {
+                "tags": [
+                    "Taldeak"
+                ],
+                "description": "Talde guztiak bueltatzen ditu.",
+                "operationId": "9eae20f44889d2245e95d06574c52b5c",
+                "responses": {
+                    "200": {
+                        "description": "Talde guztiak bueltatu ditu."
+                    },
+                    "404": {
+                        "description": "Ez du talderik topatu."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "taldeak"
+                ],
+                "description": "Adierazitako informazioaren arabera talde bat eguneratzen du datubasean.",
+                "operationId": "4e67bf3a615d19724f89f045a713f27b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "kodea": {
+                                        "description": "Taldearen kodea",
+                                        "type": "string"
+                                    },
+                                    "izena": {
+                                        "description": "Taldearen izena",
+                                        "type": "string"
+                                    },
+                                    "eguneratze_data": {
+                                        "description": "Taldearen eguneratze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Taldea ondo eguneratu da datubasean."
+                    },
+                    "404": {
+                        "description": "Ez du talderik topatu ID horrekin."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Taldeak"
+                ],
+                "description": "Adierazitako informazioarekin talde berri bat txertatzen du datubasean.",
+                "operationId": "255bfc8d9c3644d9cd2b363e8a586134",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "kodea": {
+                                        "description": "Taldearen kodea",
+                                        "type": "string"
+                                    },
+                                    "izena": {
+                                        "description": "Taldearen izena",
+                                        "type": "string"
+                                    },
+                                    "sortze_data": {
+                                        "description": "Taldearen sortze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Taldea ondo txertatu da datubasean."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Taldeak"
+                ],
+                "description": "Adierazitako ID-a erabilita datubasean taldeen ezabatze logikoa egiten du.",
+                "operationId": "148af6debffb1079dc1b1f73922ddf7e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Ezabatzeko taldearen ID-a",
+                                        "type": "integer"
+                                    },
+                                    "ezabatze_data": {
+                                        "description": "Ezabatze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Taldeak ondo ezabatu dira datubasean."
+                    },
+                    "404": {
+                        "description": "Ez dago talderik ID horrekin."
+                    }
+                }
+            }
+        },
+        "/taldeak/{id}": {
+            "get": {
+                "tags": [
+                    "Taldeak"
+                ],
+                "description": "Adierazitako ID-aren arabera talde bat bueltatzen du.",
+                "operationId": "9cc4d1b4af796f6d9362b61df93fe625",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Taldearen ID-a",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Aukeratutako taldea bueltatzen du."
+                    },
+                    "404": {
+                        "description": "Ez du talderik topatu ID horrekin."
+                    }
+                }
+            }
+        },
+        "/ticket_lerro": {
+            "post": {
+                "tags": [
+                    "Ticket lerro"
+                ],
+                "description": "Adierazitako informazioarekin ticket lerro bat txertatzen du datubasean.",
+                "operationId": "f5d46212e2ec7d643e1ddc33ab09cb32",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_hitzordu": {
+                                        "description": "Hitzorduaren ID-a",
+                                        "type": "string"
+                                    },
+                                    "tratamendua": {
+                                        "description": "Tratamenduak",
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "tratamendu_id": {
+                                                    "description": "Tratamenduaren ID-a",
+                                                    "type": "integer"
+                                                },
+                                                "prezioa": {
+                                                    "description": "Tratamenduaren prezioa",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Erregistroa ondo txertatu da datubasean."
+                    }
+                }
+            }
+        },
+        "/tratamenduak": {
+            "get": {
+                "tags": [
+                    "Tratamenduak"
+                ],
+                "description": "Tratamendu guztiak bueltatzen ditu.",
+                "operationId": "970e605f51f4ec20b4721b2ffffa3815",
+                "responses": {
+                    "200": {
+                        "description": "Tratamendu guztiak bueltatu ditu."
+                    },
+                    "404": {
+                        "description": "Ez du tratamendurik topatu."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Tratamenduak"
+                ],
+                "description": "Adierazitako informazioaren arabera tratamendu bat eguneratzen du datubasean.",
+                "operationId": "056755cd1a1e96820c39fd8feb6321ad",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Tratamenduaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "izena": {
+                                        "description": "Tratamenduaren izena",
+                                        "type": "string"
+                                    },
+                                    "etxeko_prezioa": {
+                                        "description": "Etxeko prezioa",
+                                        "type": "integer"
+                                    },
+                                    "kanpoko_prezioa": {
+                                        "description": "Kanpoko prezioa",
+                                        "type": "integer"
+                                    },
+                                    "id_katTratamendu": {
+                                        "description": "Tratamenduaren kategoria ID-a",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Tratamendua ondo eguneratu da datubasean."
+                    },
+                    "404": {
+                        "description": "Ez du tratamendurik topatu ID horrekin."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Tratamenduak"
+                ],
+                "description": "Adierazitako informazioarekin tratamendu berri bat txertatzen du datubasean.",
+                "operationId": "09cc1369db599165994c72b1edeccce4",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "izena": {
+                                        "description": "Tratamenduaren izena",
+                                        "type": "string"
+                                    },
+                                    "etxeko_prezioa": {
+                                        "description": "Etxeko prezioa",
+                                        "type": "integer"
+                                    },
+                                    "kanpoko_prezioa": {
+                                        "description": "Kanpoko prezioa",
+                                        "type": "integer"
+                                    },
+                                    "id_katTratamendu": {
+                                        "description": "Tratamenduaren kategoria ID-a",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Tratamendua ondo txertatu da datubasean."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Tratamenduak"
+                ],
+                "description": "Adierazitako ID-a erabilita datubasean tratamenduen ezabatze logikoa egiten du.",
+                "operationId": "673c8111bbffd29ba83a7eb16113154f",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Ezabatzeko tratamenduaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "ezabatze_data": {
+                                        "description": "Ezabatze-data eta ordua",
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Tratamenduak ondo ezabatu dira datubasean."
+                    },
+                    "404": {
+                        "description": "Ez dago tratamendurik ID horrekin."
+                    }
+                }
+            }
+        },
+        "/tratamenduByLangile/{group}": {
+            "get": {
+                "tags": [
+                    "Tratamenduak"
+                ],
+                "description": "Adierazitako ID-aren arabera langileak bueltatzen bueltatzen ditu tratamendutan bereizita.",
+                "operationId": "bfe6c94b894c21889e4fef3c7b33aa9a",
+                "parameters": [
+                    {
+                        "name": "group",
+                        "in": "path",
+                        "description": "Taldearen ID-a",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Aukeratutako guztia bueltatzen du."
+                    },
+                    "404": {
+                        "description": "Ez du ezer topatu ID horrekin."
+                    }
+                }
+            }
+        },
+        "/txanda": {
+            "get": {
+                "tags": [
+                    "Txandak"
+                ],
+                "description": "Txanda guztiak bueltatzen ditu.",
+                "operationId": "93213e0013188279e37b439279635969",
+                "responses": {
+                    "200": {
+                        "description": "Txanda guztiak bueltatu ditu."
+                    },
+                    "404": {
+                        "description": "Ez du txandarik topatu."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Txandak"
+                ],
+                "description": "Adierazitako informazioarekin produktu berri bat txertatzen du datubasean.",
+                "operationId": "2f7a39cb51e574c30c940fc96ef062fe",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "izena": {
+                                        "description": "Produktuaren izena",
+                                        "type": "string"
+                                    },
+                                    "deskribapena": {
+                                        "description": "Produktuaren deskribapena",
+                                        "type": "string"
+                                    },
+                                    "id_kategoria": {
+                                        "description": "Kategoriaren ID-a",
+                                        "type": "integer"
+                                    },
+                                    "marka": {
+                                        "description": "Produktuaren marka",
+                                        "type": "string"
+                                    },
+                                    "stock": {
+                                        "description": "Hasierako stock-a",
+                                        "type": "integer"
+                                    },
+                                    "stock_alerta": {
+                                        "description": "Stock-a alertaren kantitatea",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Produktua ondo txertatu da datubasean."
+                    }
+                }
+            }
+        },
+        "/txanda/{id}": {
+            "get": {
+                "tags": [
+                    "Txandak"
+                ],
+                "description": "Adierazitako ID-aren arabera txanda bat bueltatzen du.",
+                "operationId": "b1199555e4a600d851219540e50e573d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Txandaren ID-a",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Aukeratutako txanda bueltatzen du."
+                    },
+                    "404": {
+                        "description": "Ez du txandarik topatu ID horrekin."
                     }
                 }
             }
         }
-    }
+    },
+    "tags": [
+        {
+            "name": "Bezeroak",
+            "description": "Bezeroak kudeatzeko kontroladorea"
+        },
+        {
+            "name": "Materiala bueltatu",
+            "description": "Materiala bueltatzeko kontroladora"
+        },
+        {
+            "name": "Hitzorduak",
+            "description": "Hitzorduak kudeatzeko kontroladorea"
+        },
+        {
+            "name": "Kategoriak",
+            "description": "Kategoriak kudeatzeko kontroladorea"
+        },
+        {
+            "name": "Koloreak",
+            "description": "Kolore historiala kudeatzeko kontroladorea"
+        },
+        {
+            "name": "Langileak",
+            "description": "Produktuak kudeatzeko kontroladorea"
+        },
+        {
+            "name": "Materiala",
+            "description": "Materiala kudeatzeko kontroladorea"
+        },
+        {
+            "name": "Ordutegiak",
+            "description": "Ordutegiak kudeatzeko kontroladorea"
+        },
+        {
+            "name": "Produktuak",
+            "description": "Produktuak kudeatzeko kontroladorea"
+        },
+        {
+            "name": "Taldeak",
+            "description": "Taldeak kudeatzeko kontroladorea"
+        },
+        {
+            "name": "Ticket lerro",
+            "description": "Ticket-en lerroak kudeatzeko kontroladorea"
+        },
+        {
+            "name": "Tratamenduak",
+            "description": "Tratamenduak kudeatzeko kontroladorea"
+        },
+        {
+            "name": "Txandak",
+            "description": "Txandak kudeatzeko kontroladorea"
+        }
+    ]
 }

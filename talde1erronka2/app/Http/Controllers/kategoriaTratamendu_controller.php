@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class kategoriaTratamendu_controller extends Controller
 {
-    public function erakutzi()
+    public function erakutsi()
     {
         $belajar = KategoriaTratamendu::all();
         if (!$belajar) {

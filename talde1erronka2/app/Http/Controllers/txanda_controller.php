@@ -5,9 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Txanda;
 
 use Illuminate\Http\Request;
-
+/**
+ * @OA\Tag(
+ *     name="Txandak",
+ *     description="Txandak kudeatzeko kontroladorea"
+ * )
+ */
 class txanda_controller extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/txanda",
+     *     tags={"Txandak"},
+     *     description="Txanda guztiak bueltatzen ditu.",
+     *     @OA\Response(response="200", description="Txanda guztiak bueltatu ditu."),
+     *     @OA\Response(response="404", description="Ez du txandarik topatu.")
+     * )
+     */
     public function getAll()
     {
         $belajar = Txanda::all();
@@ -17,7 +31,22 @@ class txanda_controller extends Controller
             return response()->json($belajar, 200);
         }
     }
-
+    /**
+     * @OA\Get(
+     *     path="/txanda/{id}",
+     *     tags={"Txandak"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="Txandaren ID-a",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     description="Adierazitako ID-aren arabera txanda bat bueltatzen du.",
+     *     @OA\Response(response="200", description="Aukeratutako txanda bueltatzen du."),
+     *     @OA\Response(response="404", description="Ez du txandarik topatu ID horrekin.")
+     * )
+     */
     public function getById($id)
     {
         $belajar = Txanda::find($id);
@@ -27,7 +56,24 @@ class txanda_controller extends Controller
             return response()->json($belajar);
         }
     }
-
+    /**
+     * @OA\Post(
+     *     path="/txanda",
+     *     tags={"Txandak"},
+     *     description="Adierazitako informazioarekin produktu berri bat txertatzen du datubasean.",
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="izena", type="string", description="Produktuaren izena"),
+     *         @OA\Property(property="deskribapena", type="string", description="Produktuaren deskribapena"),
+     *         @OA\Property(property="id_kategoria", type="integer", description="Kategoriaren ID-a"),
+     *         @OA\Property(property="marka", type="string", description="Produktuaren marka"),
+     *         @OA\Property(property="stock", type="integer", description="Hasierako stock-a"),
+     *         @OA\Property(property="stock_alerta", type="integer", description="Stock-a alertaren kantitatea")
+     *     )
+     * ),
+     *     @OA\Response(response="201", description="Txanda ondo txertatu da datubasean.")
+     * )
+     */
     public function insert(Request $request)
     {
         $datos = $request->all();

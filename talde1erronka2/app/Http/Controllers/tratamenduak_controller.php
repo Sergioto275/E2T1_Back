@@ -6,10 +6,24 @@ use App\Models\Langile;
 use App\Models\Tratamenduak;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+/**
+ * @OA\Tag(
+ *     name="Tratamenduak",
+ *     description="Tratamenduak kudeatzeko kontroladorea"
+ * )
+ */
 class tratamenduak_controller extends Controller
 {
-    public function erakutzi(){
+    /**
+     * @OA\Get(
+     *     path="/tratamenduak",
+     *     tags={"Tratamenduak"},
+     *     description="Tratamendu guztiak bueltatzen ditu.",
+     *     @OA\Response(response="200", description="Tratamendu guztiak bueltatu ditu."),
+     *     @OA\Response(response="404", description="Ez du tratamendurik topatu.")
+     * )
+     */
+    public function erakutsi(){
         $datuak = Tratamenduak::all();
         if(!$datuak){
             return response()->json(["Error"=>"Errorea egon da eskaera egiterakoan",404]);
@@ -17,7 +31,22 @@ class tratamenduak_controller extends Controller
             return response() -> json($datuak, 200);
         }
     }
-
+    /**
+     * @OA\Get(
+     *     path="/tratamenduByLangile/{group}",
+     *     tags={"Tratamenduak"},
+     *     @OA\Parameter(
+     *         name="group",
+     *         description="Taldearen ID-a",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     description="Adierazitako ID-aren arabera langileak bueltatzen bueltatzen ditu tratamendutan bereizita.",
+     *     @OA\Response(response="200", description="Aukeratutako guztia bueltatzen du."),
+     *     @OA\Response(response="404", description="Ez du ezer topatu ID horrekin.")
+     * )
+     */
     public function tratamientos_groupby_langile($grupo){
         $resultados = Langile::leftJoin('hitzordua', function ($join) {
                 $join->on('langilea.id', '=', 'hitzordua.id_langilea')
@@ -55,13 +84,45 @@ class tratamenduak_controller extends Controller
             return response()->json($resultados, 200);
         }
     }
-
+    /**
+     * @OA\Post(
+     *     path="/tratamenduak",
+     *     tags={"Tratamenduak"},
+     *     description="Adierazitako informazioarekin tratamendu berri bat txertatzen du datubasean.",
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="izena", type="string", description="Tratamenduaren izena"),
+     *         @OA\Property(property="etxeko_prezioa", type="integer", description="Etxeko prezioa"),
+     *         @OA\Property(property="kanpoko_prezioa", type="integer", description="Kanpoko prezioa"),
+     *         @OA\Property(property="id_katTratamendu", type="integer", description="Tratamenduaren kategoria ID-a"),
+     *     )
+     * ),
+     *     @OA\Response(response="201", description="Tratamendua ondo txertatu da datubasean.")
+     * )
+     */
     public function insert(Request $request){
         $datos=$request->all();
         Tratamenduak::insert(array('izena'=>$datos["izena"],"etxeko_prezioa"=>$datos["etxeko_prezioa"],"kanpoko_prezioa"=>$datos["kanpoko_prezioa"],"id_katTratamendu"=>$datos["id_katTratamendu"]));
         return response('', 201);
     }
-
+    /**
+     * @OA\Put(
+     *     path="/tratamenduak",
+     *     tags={"Tratamenduak"},
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="id", type="integer", description="Tratamenduaren ID-a"),
+     *         @OA\Property(property="izena", type="string", description="Tratamenduaren izena"),
+     *         @OA\Property(property="etxeko_prezioa", type="integer", description="Etxeko prezioa"),
+     *         @OA\Property(property="kanpoko_prezioa", type="integer", description="Kanpoko prezioa"),
+     *         @OA\Property(property="id_katTratamendu", type="integer", description="Tratamenduaren kategoria ID-a"),
+     *     )
+     * ),
+     *     description="Adierazitako informazioaren arabera tratamendu bat eguneratzen du datubasean.",
+     *     @OA\Response(response="202", description="Tratamendua ondo eguneratu da datubasean."),
+     *     @OA\Response(response="404", description="Ez du tratamendurik topatu ID horrekin.")
+     * )
+     */
     public function update(Request $request){
         $datos=$request->all();
         $belajar = Tratamenduak::find($datos['id']);
@@ -74,7 +135,21 @@ class tratamenduak_controller extends Controller
             return response('', 200);
         }
     }
-
+    /**
+     * @OA\Delete(
+     *     path="/tratamenduak",
+     *     tags={"Tratamenduak"},
+     *     description="Adierazitako ID-a erabilita datubasean tratamenduen ezabatze logikoa egiten du.",
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="id", type="integer", description="Ezabatzeko tratamenduaren ID-a"),
+     *         @OA\Property(property="ezabatze_data", type="string", format="date-time", description="Ezabatze-data eta ordua"),
+     *     )
+     * ),
+     *     @OA\Response(response="200", description="Tratamenduak ondo ezabatu dira datubasean."),
+     *     @OA\Response(response="404", description="Ez dago tratamendurik ID horrekin.")
+     * )
+     */
     public function delete(Request $request){
         $datos=$request->all();
         $belajar = Tratamenduak::find($datos['id']);

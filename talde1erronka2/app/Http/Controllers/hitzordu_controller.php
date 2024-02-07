@@ -9,7 +9,12 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Error;
 use Illuminate\Support\Facades\DB;
-
+/**
+ * @OA\Tag(
+ *     name="Hitzorduak",
+ *     description="Hitzorduak kudeatzeko kontroladorea"
+ * )
+ */
 class hitzordu_controller extends Controller
 {
     function agregarEvento($array, $fecha, $evento) {
@@ -62,7 +67,7 @@ class hitzordu_controller extends Controller
             return response()->json($citas, 200);
         }
     }
-    public function erakutzi()
+    public function erakutsi()
     {
         $datos = Hitzordu::leftJoin('langilea', 'hitzordua.id_langilea', '=', 'langilea.id')
                         ->select('hitzordua.*', 'langilea.kodea','langilea.izena as l_izena')

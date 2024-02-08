@@ -148,7 +148,7 @@ Route::post("/ticket_lerro","App\Http\Controllers\\ticket_lerro_controller@inser
 //== TRATAMENDU KATEGORIAK ================================================>
 //=========================================================================>
 
-Route::get("/kategoriaTratamendu","App\Http\Controllers\\kategoriaTratamendu_controller@erakutzi");
+Route::get("/kategoriaTratamendu","App\Http\Controllers\\kategoriaTratamendu_controller@erakutsi");
 Route::post("/kategoriaTratamendu","App\Http\Controllers\\kategoriaTratamendu_controller@insert");
 Route::put("/kategoriaTratamendu","App\Http\Controllers\\kategoriaTratamendu_controller@update");
 Route::delete("/kategoriaTratamendu","App\Http\Controllers\\kategoriaTratamendu_controller@delete");

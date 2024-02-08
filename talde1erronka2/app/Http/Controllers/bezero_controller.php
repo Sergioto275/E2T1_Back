@@ -126,8 +126,8 @@ class bezero_controller extends Controller
      *         @OA\Property(property="id", type="string", description="Elementuaren ID-a"),
      *     )
      * ),
-     *     @OA\Response(response="200", description="Produktuak ondo ezabatu dira datubasean."),
-     *     @OA\Response(response="404", description="Ez dago produkturik ID horrekin.")
+     *     @OA\Response(response="200", description="Bezeroak ondo ezabatu dira datubasean."),
+     *     @OA\Response(response="404", description="Ez dago bezerorik ID horrekin.")
      * )
      */
     public function delete(Request $request)

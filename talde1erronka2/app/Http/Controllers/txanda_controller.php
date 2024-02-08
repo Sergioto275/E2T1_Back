@@ -60,15 +60,14 @@ class txanda_controller extends Controller
      * @OA\Post(
      *     path="/txanda",
      *     tags={"Txandak"},
-     *     description="Adierazitako informazioarekin produktu berri bat txertatzen du datubasean.",
+     *     description="Adierazitako informazioarekin txanda berri bat txertatzen du datubasean.",
      * @OA\RequestBody(
      *     @OA\JsonContent(
-     *         @OA\Property(property="izena", type="string", description="Produktuaren izena"),
-     *         @OA\Property(property="deskribapena", type="string", description="Produktuaren deskribapena"),
-     *         @OA\Property(property="id_kategoria", type="integer", description="Kategoriaren ID-a"),
-     *         @OA\Property(property="marka", type="string", description="Produktuaren marka"),
-     *         @OA\Property(property="stock", type="integer", description="Hasierako stock-a"),
-     *         @OA\Property(property="stock_alerta", type="integer", description="Stock-a alertaren kantitatea")
+     *         @OA\Property(property="id_langilea", type="integer", description="Txandaren langilearen ID-a"),
+     *         @OA\Property(property="kodea", type="string", description="Txandaren kodea"),
+     *         @OA\Property(property="mota", type="string", description="Txandaren mota"),
+     *         @OA\Property(property="data", type="string", format="date-time", description="Txandaren data eta ordua"),
+     *         @OA\Property(property="sortze_data", type="string", format="date-time", description="Txandaren sortze-data eta ordua"),
      *     )
      * ),
      *     @OA\Response(response="201", description="Txanda ondo txertatu da datubasean.")
@@ -109,8 +108,25 @@ class txanda_controller extends Controller
 
         return response('', 201);
     }
-
-
+    /**
+     * @OA\Put(
+     *     path="/txanda",
+     *     tags={"Txandak"},
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="id", type="integer", description="Txandaren ID-a"),
+     *         @OA\Property(property="id_langilea", type="integer", description="Txandaren langilearen ID-a"),
+     *         @OA\Property(property="kodea", type="string", description="Txandaren kodea"),
+     *         @OA\Property(property="mota", type="string", description="Txandaren mota"),
+     *         @OA\Property(property="data", type="string", format="date-time", description="Txandaren data eta ordua"),
+     *         @OA\Property(property="sortze_data", type="string", format="date-time", description="Txandaren sortze-data eta ordua"),
+     *     )
+     * ),
+     *     description="Adierazitako informazioaren arabera txanda bat eguneratzen du datubasean.",
+     *     @OA\Response(response="202", description="Txanda ondo eguneratu da datubasean."),
+     *     @OA\Response(response="404", description="Ez du txandarik topatu ID horrekin.")
+     * )
+     */
     public function update(Request $request)
     {
         $datos = $request->all();
@@ -123,7 +139,20 @@ class txanda_controller extends Controller
         }
 
     }
-
+    /**
+     * @OA\Delete(
+     *     path="/txanda",
+     *     tags={"Txandak"},
+     *     description="Adierazitako ID-a erabilita datubasean txandaren ezabatze logikoa egiten du.",
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="id", type="string", description="Elementuaren ID-a"),
+     *     )
+     * ),
+     *     @OA\Response(response="200", description="Txandak ondo ezabatu dira datubasean."),
+     *     @OA\Response(response="404", description="Ez dago txandarik ID horrekin.")
+     * )
+     */
     public function delete(Request $request)
     {
         $datos = $request->all();

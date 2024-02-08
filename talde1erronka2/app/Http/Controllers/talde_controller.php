@@ -57,7 +57,7 @@ class talde_controller extends Controller
     /**
      * @OA\Put(
      *     path="/taldeak",
-     *     tags={"taldeak"},
+     *     tags={"Taldeak"},
      * @OA\RequestBody(
      *     @OA\JsonContent(
      *         @OA\Property(property="kodea", type="string", description="Taldearen kodea"),

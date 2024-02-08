@@ -55,7 +55,7 @@ class kolore_histroriala_controller extends Controller
     {
         $belajar = Kolore_historiala::join('produktua', 'kolore_historiala.id_produktua', '=', 'produktua.id')
                             ->select('kolore_historiala.*', 'produktua.izena as produktua_izena','produktua.marka as produktua_marka')
-                            ->where('kolore_historiala  .id', $id)
+                            ->where('kolore_historiala.id', $id)
                             ->get();
 
         if (!$belajar) {

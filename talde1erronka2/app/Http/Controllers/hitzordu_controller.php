@@ -112,30 +112,6 @@ class hitzordu_controller extends Controller
         return $count;
     }
 
-    public function citas_diaponibles(Request $request){
-        $datos=$request->all();
-        $data = $datos["data"];
-        $hasiera_ordua = $datos["hasiera_ordua"];
-        $amaiera_ordua = $datos["amaiera_ordua"];
-        $fechaCarbon = Carbon::parse($data);
-        $eguna = $fechaCarbon->dayOfWeek;
-        $count = Langile::where('kodea', function ($query) use ($data, $eguna) {
-            $query->select('kodea')
-                ->from('ordutegia')
-                ->where('hasiera_data', '<=', $data)
-                ->where('amaiera_data', '>=', $data)
-                ->where('eguna', '=', $eguna)
-                ->where(function ($query) {
-                    $query->whereNull('ezabatze_data')
-                        ->orWhere('ezabatze_data', '0000-00-00');
-                });
-        })->count();
-        $count--;
-        $hitzordu_kop = $this->hitzordu_kop($data, $hasiera_ordua, $amaiera_ordua);
-        $citas_disponibles =  $count - $hitzordu_kop;
-        return $citas_disponibles;
-    }
-
     public function citasbydate($data){
         if($data){
             $fecha = $data;

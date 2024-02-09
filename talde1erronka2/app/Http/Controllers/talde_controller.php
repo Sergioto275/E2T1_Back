@@ -47,7 +47,7 @@ class talde_controller extends Controller
      */
     public function getById($kodea)
     {
-        $emaitza = Taldea::where('kodea',$kodea)->get();
+        $emaitza = Taldea::find($kodea);
         if(!$emaitza){
             return response()->json(['Error' => "No hay resultados con ese ID",], 404);
         }else{

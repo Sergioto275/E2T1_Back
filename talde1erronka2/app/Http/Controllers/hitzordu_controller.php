@@ -9,7 +9,12 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Error;
 use Illuminate\Support\Facades\DB;
-
+/**
+ * @OA\Tag(
+ *     name="Hitzorduak",
+ *     description="Hitzorduak kudeatzeko kontroladorea"
+ * )
+ */
 class hitzordu_controller extends Controller
 {
     function agregarEvento($array, $fecha, $evento) {
@@ -62,7 +67,16 @@ class hitzordu_controller extends Controller
             return response()->json($citas, 200);
         }
     }
-    public function erakutzi()
+    /**
+     * @OA\Get(
+     *     path="/hitzorduak",
+     *     tags={"Hitzorduak"},
+     *     description="Hitzordu guztiak bueltatzen ditu.",
+     *     @OA\Response(response="200", description="Hitzordu guztiak bueltatu ditu."),
+     *     @OA\Response(response="404", description="Ez du hitzordurik topatu.")
+     * )
+     */
+    public function erakutsi()
     {
         $datos = Hitzordu::leftJoin('langilea', 'hitzordua.id_langilea', '=', 'langilea.id')
                         ->select('hitzordua.*', 'langilea.kodea','langilea.izena as l_izena')
@@ -74,7 +88,26 @@ class hitzordu_controller extends Controller
             return response()->json($datos, 200);
         }
     }
-
+    /**
+     * @OA\Post(
+     *     path="/hitzorduak",
+     *     tags={"Hitzorduak"},
+     *     description="Adierazitako informazioarekin hitzordu berri bat txertatzen du datubasean.",
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="data", type="string", format="date", description="Hitzorduaren data"),
+     *         @OA\Property(property="hasOrdua", type="string", format="time", description="Hitzorduaren hasierako ordua"),
+     *         @OA\Property(property="amaOrdua", type="string", format="time", description="Hitzorduaren amaierako ordua"),
+     *         @OA\Property(property="izena", type="string", description="Bezeroaren izena"),
+     *         @OA\Property(property="telefonoa", type="string", description="Bezeroaren telefonoa"),
+     *         @OA\Property(property="deskribapena", type="string", description="Hitzorduaren deskribapena"),
+     *         @OA\Property(property="etxekoa", type="string", description="Hitzorduaren etxekoa (Adibidez, 'E' edo 'K')"),
+     *         @OA\Property(property="eserlekua", type="integer", description="Hitzorduaren eserlekua"),
+     *     )
+     * ),
+     *     @OA\Response(response="201", description="Hitzordua ondo txertatu da datubasean.")
+     * )
+     */
     public function insert(Request $request){
         $datos=$request->all();
         $eserlekua = $this->hitzordu_kop($datos["data"],$datos["hasOrdua"],$datos["amaOrdua"]);
@@ -106,31 +139,22 @@ class hitzordu_controller extends Controller
 
         return $count;
     }
-
-    public function citas_diaponibles(Request $request){
-        $datos=$request->all();
-        $data = $datos["data"];
-        $hasiera_ordua = $datos["hasiera_ordua"];
-        $amaiera_ordua = $datos["amaiera_ordua"];
-        $fechaCarbon = Carbon::parse($data);
-        $eguna = $fechaCarbon->dayOfWeek;
-        $count = Langile::where('kodea', function ($query) use ($data, $eguna) {
-            $query->select('kodea')
-                ->from('ordutegia')
-                ->where('hasiera_data', '<=', $data)
-                ->where('amaiera_data', '>=', $data)
-                ->where('eguna', '=', $eguna)
-                ->where(function ($query) {
-                    $query->whereNull('ezabatze_data')
-                        ->orWhere('ezabatze_data', '0000-00-00');
-                });
-        })->count();
-        $count--;
-        $hitzordu_kop = $this->hitzordu_kop($data, $hasiera_ordua, $amaiera_ordua);
-        $citas_disponibles =  $count - $hitzordu_kop;
-        return $citas_disponibles;
-    }
-
+    /**
+     * @OA\Get(
+     *     path="/hitzorduak/{data}",
+     *     tags={"Hitzorduak"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="Hitzorduaren data",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="date")
+     *     ),
+     *     description="Adierazitako dataren arabera hitzordu guztiak bueltatzen ditu.",
+     *     @OA\Response(response="200", description="Aukeratutako hitzorduak bueltatzen ditu."),
+     *     @OA\Response(response="404", description="Ez du hitzordurik topatu ID horrekin.")
+     * )
+     */
     public function citasbydate($data){
         if($data){
             $fecha = $data;
@@ -145,7 +169,28 @@ class hitzordu_controller extends Controller
             return response()->json($citas, 200);
         }
     }
-
+    /**
+     * @OA\Put(
+     *     path="/hitzorduak",
+     *     tags={"Hitzorduak"},
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="id", type="string", description="Hitzorduaren ID-a"),
+     *         @OA\Property(property="data", type="string", format="date", description="Hitzorduaren data"),
+     *         @OA\Property(property="hasiera_ordua", type="string", format="time", description="Hitzorduaren hasierako ordua"),
+     *         @OA\Property(property="amaiera_ordua", type="string", format="time", description="Hitzorduaren amaierako ordua"),
+     *         @OA\Property(property="eserlekua", type="integer", description="Hitzorduaren eserlekua"),
+     *         @OA\Property(property="izena", type="string", description="Bezeroaren izena"),
+     *         @OA\Property(property="telefonoa", type="string", description="Bezeroaren telefonoa"),
+     *         @OA\Property(property="deskribapena", type="string", description="Hitzorduaren deskribapena"),
+     *         @OA\Property(property="etxekoa", type="string", description="Hitzorduaren etxekoa (Adibidez, 'E' edo 'K')"),
+     *     )
+     * ),
+     *     description="Adierazitako informazioaren arabera hitzordu bat eguneratzen du datubasean.",
+     *     @OA\Response(response="202", description="Hitzordua ondo eguneratu da datubasean."),
+     *     @OA\Response(response="404", description="Ez du hitzordurik topatu ID horrekin.")
+     * )
+     */
     public function update(Request $request){
         $datos=$request->all();
         $belajar = Hitzordu::find($datos['id']);
@@ -158,7 +203,20 @@ class hitzordu_controller extends Controller
             return response('', 202);
         }
     }
-
+    /**
+     * @OA\Delete(
+     *     path="/hitzorduak",
+     *     tags={"Hitzorduak"},
+     *     description="Adierazitako ID-a erabilita datubasean hitzorduaren ezabatze logikoa egiten du.",
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="id", type="string", description="Elementuaren ID-a"),
+     *     )
+     * ),
+     *     @OA\Response(response="200", description="Hitzorduak ondo ezabatu dira datubasean."),
+     *     @OA\Response(response="404", description="Ez dago hitzordurik ID horrekin.")
+     * )
+     */
     public function delete(Request $request){
         $datos=$request->all();
         $belajar = Hitzordu::find($datos['id']);
@@ -171,7 +229,21 @@ class hitzordu_controller extends Controller
             return response('', 200);
         }
     }
-
+    /**
+     * @OA\Put(
+     *     path="/hitzorduakesleitu",
+     *     tags={"Hitzorduak"},
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="id", type="integer", description="Hitzorduaren ID-a"),
+     *         @OA\Property(property="id_langilea", type="string", description="Langilearen ID-a"),
+     *     )
+     * ),
+     *     description="Adierazitako informazioaren arabera hitzordu bat langile bati esleitzen zaio.",
+     *     @OA\Response(response="202", description="Hitzordua ondo eguneratu da datubasean."),
+     *     @OA\Response(response="404", description="Ez du hitzordurik topatu ID horrekin.")
+     * )
+     */
     public function asignar(Request $request){
         $datos=$request->all();
         $belajar = Hitzordu::find($datos['id']);
@@ -185,7 +257,21 @@ class hitzordu_controller extends Controller
             return response('', 200);
         }
     }
-
+    /**
+     * @OA\Put(
+     *     path="/hitzorduaamaitu",
+     *     tags={"Hitzorduak"},
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="id", type="integer", description="Hitzorduaren ID-a"),
+     *         @OA\Property(property="prezio_totala", type="integer", description="Prezio totala"),
+     *     )
+     * ),
+     *     description="Adierazitako informazioaren arabera hitzordu bat amaitzen da eta prezio_totala esleitzen zaio.",
+     *     @OA\Response(response="202", description="Hitzordua ondo eguneratu da datubasean."),
+     *     @OA\Response(response="404", description="Ez du hitzordurik topatu ID horrekin.")
+     * )
+     */
     public function finalizar(Request $request){
         $datos=$request->all();
         $belajar = Hitzordu::find($datos['id']);

@@ -8,9 +8,23 @@ use App\Models\Kategoria;
 use Carbon\Carbon;
 
 use Illuminate\Http\Request;
-
+/**
+ * @OA\Tag(
+ *     name="Materiala",
+ *     description="Materiala kudeatzeko kontroladorea"
+ * )
+ */
 class materiala_controller extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/materiala",
+     *     tags={"Materiala"},
+     *     description="Material guztia bueltatzen ditu.",
+     *     @OA\Response(response="200", description="Material guztia bueltatu ditu."),
+     *     @OA\Response(response="404", description="Ez du materialik topatu.")
+     * )
+     */
     public function getAll()
     {
         $belajar = Materiala::all();
@@ -21,7 +35,22 @@ class materiala_controller extends Controller
             return response()->json($belajar, 200);
         }
     }
-
+    /**
+     * @OA\Get(
+     *     path="/materiala/{id}",
+     *     tags={"Materiala"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         description="Materialaren ID-a",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     description="Adierazitako ID-aren arabera material bat bueltatzen du.",
+     *     @OA\Response(response="200", description="Aukeratutako materiala bueltatzen du."),
+     *     @OA\Response(response="404", description="Ez du materialik topatu ID horrekin.")
+     * )
+     */
     public function getById($id)
     {
         $belajar = Materiala::find($id);
@@ -32,7 +61,15 @@ class materiala_controller extends Controller
             return response()->json($belajar);
         }
     }
-
+    /**
+     * @OA\Get(
+     *     path="/materialalibre",
+     *     tags={"Materiala"},
+     *     description="Libre dagoen material guztia.",
+     *     @OA\Response(response="200", description="Material guztia bueltatu ditu."),
+     *     @OA\Response(response="404", description="Ez du materialik topatu.")
+     * )
+     */
     public function getLibre()
     {
         $materialasLibres = Materiala::select('materiala.id', 'materiala.izena', 'materiala.etiketa', 'materiala.sortze_data', 'materiala.eguneratze_data', 'materiala.ezabatze_data')
@@ -47,8 +84,20 @@ class materiala_controller extends Controller
 
         return response()->json($materialasLibres);
     }
-
-
+    /**
+     * @OA\Post(
+     *     path="/materiala",
+     *     tags={"Materiala"},
+     *     description="Adierazitako informazioarekin material berri bat txertatzen du datubasean.",
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="etiketa", type="string", description="Materialaren etiketa"),
+     *         @OA\Property(property="izena", type="string", description="Materialaren izena"),
+     *     )
+     * ),
+     *     @OA\Response(response="201", description="Produktua ondo txertatu da datubasean.")
+     * )
+     */
     public function insert(Request $request)
     {
         $datos = $request->all();
@@ -59,7 +108,22 @@ class materiala_controller extends Controller
         Materiala::insert($data);
         return response('', 201);
     }
-
+    /**
+     * @OA\Put(
+     *     path="/materiala",
+     *     tags={"Materiala"},
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="id", type="integer", description="Materialaren ID-a"),
+     *         @OA\Property(property="etiketa", type="string", description="Materialaren etiketa"),
+     *         @OA\Property(property="izena", type="string", description="Materialaren izena"),
+     *     )
+     * ),
+     *     description="Adierazitako informazioaren arabera material bat eguneratzen du datubasean.",
+     *     @OA\Response(response="202", description="Materiala ondo eguneratu da datubasean."),
+     *     @OA\Response(response="404", description="Ez du materialik topatu ID horrekin.")
+     * )
+     */
     public function update(Request $request)
     {
         $datos = $request->all();
@@ -73,7 +137,21 @@ class materiala_controller extends Controller
             return response('', 202);
         }
     }
-
+    /**
+     * @OA\Delete(
+     *     path="/materiala",
+     *     tags={"Materiala"},
+     *     description="Adierazitako ID-a erabilita datubasean materialaren ezabatze logikoa egiten du.",
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="id", type="integer", description="Ezabatzeko produktuaren ID-a"),
+     *         @OA\Property(property="ezabatze_data", type="string", format="date-time", description="Ezabatze-data eta ordua"),
+     *     )
+     * ),
+     *     @OA\Response(response="200", description="Materiala ondo ezabatu da datubasean."),
+     *     @OA\Response(response="404", description="Ez dago materialik ID horrekin.")
+     * )
+     */
     public function delete(Request $request)
     {
         $datos = $request->all();
@@ -87,7 +165,28 @@ class materiala_controller extends Controller
             return response('', 200);
         }
     }
-
+    /**
+     * @OA\Put(
+     *     path="/materiala/atera",
+     *     tags={"Materiala"},
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(property="id", type="integer", description="Langilearen ID-a"),
+     *         @OA\Property(
+     *             property="materiala",
+     *             type="array",
+     *             description="Materialen zerrenda",
+     *             @OA\Items(
+     *                 @OA\Property(property="id", type="integer", description="Materialaren ID-a"),
+     *             )
+     *         )
+     *     )
+     * ),
+     *     description="Adierazitako langilea zein material atera duen erregistratzen du.",
+     *     @OA\Response(response="202", description="Erregistroa ondo txertatu da datubasean."),
+     *     @OA\Response(response="404", description="Ez du erregistrorik topatu ID horrekin.")
+     * )
+     */
     public function atera(Request $request)
     {
         try {
@@ -111,7 +210,27 @@ class materiala_controller extends Controller
             return response()->json(['Error' => $e->getMessage()], 500);
         }
     }
-
+    /**
+     * @OA\Put(
+     *     path="/materiala/bueltatu",
+     *     tags={"Materiala"},
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *         @OA\Property(
+     *             property="materiala",
+     *             type="array",
+     *             description="Materialen zerrenda",
+     *             @OA\Items(
+     *                 @OA\Property(property="id", type="integer", description="Materialaren ID-a"),
+     *             )
+     *         )
+     *     )
+     * ),
+     *     description="Zein material bueltatu den erregistratzen du.",
+     *     @OA\Response(response="202", description="Erregistroa ondo txertatu da datubasean."),
+     *     @OA\Response(response="404", description="Ez du erregistrorik topatu ID horrekin.")
+     * )
+     */
     public function bueltatu(Request $request)
     {
         $materialak = $request->json()->all();

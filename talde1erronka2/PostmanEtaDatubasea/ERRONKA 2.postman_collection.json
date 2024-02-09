@@ -1,0 +1,1831 @@
+{
+	"info": {
+		"_postman_id": "fef8049b-aa86-4246-9b82-36c95fb4403b",
+		"name": "ERRONKA 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30305494"
+	},
+	"item": [
+		{
+			"name": "TALDEAK",
+			"item": [
+				{
+					"name": "Taldeak GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/taldeak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"taldeak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Taldeak GET BY KODEA",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/taldeak/:kodea",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"taldeak",
+								":kodea"
+							],
+							"variable": [
+								{
+									"key": "kodea",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Taldeak POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"kodea\": \"sisi\",\r\n    \"izena\": \"Frogaizena\",\r\n    \"sortze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/taldeak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"taldeak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Taldeak PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"kodea\": \"1\",\r\n    \"izena\": \"Frogaizena\",\r\n    \"eguneratze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/taldeak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"taldeak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Taldeak DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"kodea\": \"1\",\r\n    \"ezabatze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/taldeak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"taldeak"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LANGILEAK",
+			"item": [
+				{
+					"name": "Langileak GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/langileak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"langileak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Langileak GET Count",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":6,\"mota\":\"M\",\"id_langilea\":23,\"eguneratze_data\":\"2024-01-19 09:51:28\"}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/langileak/count/:fecha",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"langileak",
+								"count",
+								":fecha"
+							],
+							"variable": [
+								{
+									"key": "fecha",
+									"value": "2024-01-08"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Langileak GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/langileak/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"langileak",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Langileak POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"izena\": \"Langileizena\",\r\n    \"abizenak\": \"Frogabizena\",\r\n    \"kodea\": \"3\",\r\n    \"sortze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/langileak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"langileak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Langileak PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 15,\r\n    \"izena\": \"Langileizena\",\r\n    \"abizenak\": \"Frogabizena\",\r\n    \"kodea\": \"[valu\",\r\n    \"eguneratze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/langileak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"langileak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Langileak DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 15,\r\n    \"ezabatze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/langileak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"langileak"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ORDUTEGIAK",
+			"item": [
+				{
+					"name": "Ordutegiak GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/ordutegiak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ordutegiak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ordutegiak GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/ordutegiak/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ordutegiak",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ordutegiak POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"kodea\": \"talde\",\r\n    \"eguna\": 1,\r\n    \"hasiera_data\": \"2024-01-11\",\r\n    \"amaiera_data\": \"2024-01-13\",\r\n    \"hasiera_ordua\": \"12:00:00\",\r\n    \"amaiera_ordua\": \"15:00:00\",\r\n    \"sortze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ordutegiak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ordutegiak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ordutegiak PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"kodea\": \"3\",\r\n    \"eguna\": 1,\r\n    \"hasiera_data\": \"2025-01-11\",\r\n    \"amaiera_data\": \"2025-01-11\",\r\n    \"hasiera_ordua\": \"12:00:00\",\r\n    \"amaiera_ordua\": \"15:00:00\",\r\n    \"eguneratze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ordutegiak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ordutegiak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ordutegiak DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"ezabatze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ordutegiak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ordutegiak"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PRODUKTUAK",
+			"item": [
+				{
+					"name": "Produktuak GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/produktuak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"produktuak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produktuak GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/produktuak/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"produktuak",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produktuak POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"izena\": \"Frogabat\",\r\n    \"deskribapena\": \"Hemen produktuaren deskribapena dago\",\r\n    \"id_kategoria\": 1,\r\n    \"marka\": \"Marka bat\",\r\n    \"stock\": 10,\r\n    \"stock_alerta\": 5,\r\n    \"sortze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/produktuak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"produktuak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produktuak PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"izena\": \"Frogabat\",\r\n    \"deskribapena\": \"Hemen produktuaren deskribapena dago\",\r\n    \"id_kategoria\": 1,\r\n    \"marka\": \"Marka bat\",\r\n    \"stock\": 10,\r\n    \"stock_alerta\": 5,\r\n    \"eguneratze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/produktuak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"produktuak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produktuak ATERA",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"produktuak\":\r\n    [\r\n        {\r\n            \"id\": 3,\r\n            \"kantitate\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/produktuak/atera",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"produktuak",
+								"atera"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produktuak DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"ezabatze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/produktuak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"produktuak"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MATERIAL",
+			"item": [
+				{
+					"name": "Materiala GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/materiala",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"materiala"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Materiala GET LIBRE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/materialalibre",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"materialalibre"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Materiala GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/materiala/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"materiala",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Materiala POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"etiketa\": \"1234567890\",\r\n    \"izena\": \"Frogabat\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/materiala",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"materiala"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Materiala PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"etiketa\": \"1234567890\",\r\n    \"izena\": \"Frogabat\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/materiala",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"materiala"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Materiala ATERA",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"materiala\":\r\n    [\r\n        {\r\n        \"id\": 5\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/materiala/atera",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"materiala",
+								"atera"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Materiala BUELTATU",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": 5\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/materiala/bueltatu",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"materiala",
+								"bueltatu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Materiala DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 5,\r\n    \"ezabatze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/materiala",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"materiala"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "KATEGORIAK",
+			"item": [
+				{
+					"name": "Kategoriak GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/kategoriak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kategoriak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kategoriak GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/kategoriak/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kategoriak",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kategoriak POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"izena\": \"Frogabat\",\r\n    \"sortze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/kategoriak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kategoriak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kategoriak PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"izena\": \"Frogabat\",\r\n    \"eguneratze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/kategoriak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kategoriak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kategoriak DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"ezabatze_data\": \"2024-01-11 12:21:32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/kategoriak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kategoriak"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HITZORDUAK",
+			"item": [
+				{
+					"name": "Hitzorduak GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/hitzorduak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"hitzorduak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hitzorduak GET BY DATA",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/hitzorduak/:data",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"hitzorduak",
+								":data"
+							],
+							"variable": [
+								{
+									"key": "data",
+									"value": "2024-01-18"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hitzorduak GET ALL HOME",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/hitzorduHome",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"hitzorduHome"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hitzorduak POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\":\"2024-01-18\",\r\n    \"hasOrdua\":\"12:00\",\r\n    \"amaOrdua\":\"13:00\",\r\n    \"izena\":\"Jesus\",\r\n    \"telefonoa\":\"111222333\",\r\n    \"deskribapena\":\"Corte de pelo\",\r\n    \"etxekoa\":\"E\",\r\n    \"eserlekua\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/hitzorduak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"hitzorduak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Asignar Hitzordu POST",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":1,\"id_langilea\":3}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/hitzorduesleitu",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"hitzorduesleitu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Amaitu Hitzordu POST",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":1, \"prezio_totala\":20}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/hitzorduaamaitu",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"hitzorduaamaitu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hitzorduak PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"data\":\"2024-01-08\",\r\n    \"hasiera_ordua\":\"11:00\",\r\n    \"amaiera_ordua\":\"12:30\",\r\n    \"eserlekua\":3,\r\n    \"izena\":\"Yo\",\r\n    \"telefonoa\":\"111222444\",\r\n    \"deskribapena\":\"aaa\",\r\n    \"etxekoa\":\"E\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/hitzorduak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"hitzorduak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hitzorduak DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/hitzorduak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"hitzorduak"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "KATEGORIA TRATAMENDU",
+			"item": [
+				{
+					"name": "Kategoria Tratamendu GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/kategoriaTratamendu",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kategoriaTratamendu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kategoria Tratamendu POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"izena\":\"pedicura\",\r\n    \"kolorea\":\"s\",\r\n    \"extra\":\"n\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/kategoriaTratamendu",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kategoriaTratamendu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kategoria Tratamendu PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":12,\r\n    \"izena\":\"pedicura\",\r\n    \"kolorea\":\"s\",\r\n    \"extra\":\"n\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/kategoriaTratamendu",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kategoriaTratamendu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kategoria Tratamendu DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/kategoriaTratamendu",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kategoriaTratamendu"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TRATAMENDUAK",
+			"item": [
+				{
+					"name": "Tratamenduak GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tratamenduak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tratamenduak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tratamenduak POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"izena\":\"prueba\",\r\n    \"etxeko_prezioa\":20,\r\n    \"kanpoko_prezioa\":25,\r\n    \"id_katTratamendu\":10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/tratamenduak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tratamenduak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tratamenduak PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":2,\r\n    \"izena\":\"prueba\",\r\n    \"etxeko_prezioa\":20,\r\n    \"kanpoko_prezioa\":25,\r\n    \"id_katTratamendu\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/tratamenduak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tratamenduak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tratamenduak DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/tratamenduak",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tratamenduak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tratamenduak GET BY LANGILE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tratamenduByLangile/:group",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tratamenduByLangile",
+								":group"
+							],
+							"variable": [
+								{
+									"key": "group",
+									"value": "3wag2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TXANDAK",
+			"item": [
+				{
+					"name": "Txanda GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/txanda",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"txanda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Txanda POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id_langilea\":21,\"kodea\":\"talde\",\"mota\":\"M\",\"data\":\"2024-01-26 09:22:25\",\"sortze_data\":\"2024-01-26 09:22:25\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/txanda",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"txanda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Txanda PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":1,\"id_langilea\":21,\"kodea\":\"talde\",\"mota\":\"M\",\"data\":\"2024-01-26 09:22:25\",\"eguneratze_data\":\"2024-01-26 09:22:25\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/txanda",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"txanda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Txanda DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"3\",\r\n    \"ezabatze_data\":\"2024-01-26 09:22:25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/txanda",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"txanda"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BEZERO",
+			"item": [
+				{
+					"name": "Bezero GET ALL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/bezero",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bezero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bezero GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bezero/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bezero",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bezero POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"izena\":\"aaa\",\r\n    \"abizena\":\"aaa\",\r\n    \"telefonoa\":\"676676676\",\r\n    \"azal_sentikorra\":\"E\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/bezero",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bezero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bezero PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"izena\": \"Manolo\",\r\n    \"abizena\": \"Perez Gabrel\",\r\n    \"telefonoa\": \"676767667\",\r\n    \"azal_sentikorra\": \"E\",\r\n    \"eguneratze_data\": \"2024-01-23 08:47:35\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/bezero",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bezero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bezero DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/bezero",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bezero"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "KOLORE",
+			"item": [
+				{
+					"name": "Kolore GET ALL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"izena\": \"Manu\",\r\n        \"abizena\": \"Pez Gabrel\",\r\n        \"telefonoa\": \"677644477\",\r\n        \"azal_sentikorra\": \"\",\r\n        \"sortze_data\": \"2024-01-23 08:47:35\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/kolore",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kolore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kolore GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/kolore/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kolore",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kolore POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\":\"2024-01-31 08:36:23\",\r\n    \"id_bezeroa\":1,\r\n    \"id_produktua\":1,\r\n    \"kantitatea\":\"12\",\r\n    \"bolumena\":\"12\",\r\n    \"oharrak\":\"asdads\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/kolore",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kolore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kolore PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":1,\"data\":\"2024-01-24\",\"id_bezeroa\":1,\"id_produktua\":1,\"kantitatea\":1,\"bolumena\":\"queso\",\"oharrak\":\"quesoa\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/kolore",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kolore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kolore DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/kolore",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"kolore"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DEVOLVER",
+			"item": [
+				{
+					"name": "Devolver GET ALL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/devolver",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"devolver"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Devolver GET BY ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/devolver/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"devolver",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Devolver POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_materiala\":1,\r\n    \"id_langilea\":3,\r\n    \"hasiera_data\":\"2024-01-31 08:36:23\",\r\n    \"sortze_data\":\"2024-01-31 08:36:30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/devolver",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"devolver"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Devolver PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"id_langilea\": 15,\r\n    \"id_materiala\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/devolver",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"devolver"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TICKET LERRO",
+			"item": [
+				{
+					"name": "Ticket Lerro POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_hitzordu\":\"9\",\r\n    \"tratamendua\":\r\n    [\r\n        {\r\n            \"tratamendu_id\":1,\r\n            \"prezioa\":\"10.00\"\r\n        },\r\n        {\r\n            \"tratamendu_id\":2,\r\n            \"prezioa\":\"5.00\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ticket_lerro",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ticket_lerro"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

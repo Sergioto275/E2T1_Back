@@ -232,7 +232,27 @@ CREATE TABLE produktu_mugimendua (
 	CONSTRAINT FK_produktu_mugimendua_langilea FOREIGN KEY (id_langilea) REFERENCES langilea(id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---INSERT
+--
+-- Volcado de datos para la tabla `taldea`
+--
+
+INSERT INTO `taldea` (`kodea`, `izena`, `sortze_data`, `eguneratze_data`, `ezabatze_data`) VALUES
+('2PCC1', 'Peluqueria de primero', '2024-02-08 09:01:58', '2024-02-08 09:01:58', NULL),
+('2PCC2', 'Peluqueros de segundo', '2024-02-08 09:02:23', '2024-02-08 09:02:23', NULL);
+
+--
+-- Volcado de datos para la tabla `langilea`
+--
+
+INSERT INTO `langilea` (`id`, `izena`, `kodea`, `abizenak`, `sortze_data`, `eguneratze_data`, `ezabatze_data`) VALUES
+(10, 'Julio', '2PCC2', 'Julio', '2024-02-08 09:03:04', '2024-02-08 09:03:04', NULL),
+(11, 'Jesus', '2PCC2', 'de Nazaret', '2024-02-08 09:03:26', '2024-02-08 09:03:26', NULL),
+(12, 'Lola', '2PCC1', 'Lolita', '2024-02-08 09:03:44', '2024-02-08 09:03:44', NULL),
+(13, 'Samuel', '2PCC1', 'de Luca', '2024-02-08 09:04:15', '2024-02-08 09:04:15', NULL),
+(14, 'David', '2PCC1', 'Canovas', '2024-02-08 09:04:25', '2024-02-08 09:04:25', NULL),
+(15, 'Guillermo', '2PCC1', 'Diaz', '2024-02-08 09:04:35', '2024-02-08 09:04:35', NULL),
+(16, 'Pedro', '2PCC2', 'Pascal', '2024-02-08 09:04:58', '2024-02-08 09:04:58', NULL),
+(17, 'Ronald', '2PCC1', 'McDonald', '2024-02-08 09:06:19', '2024-02-08 09:06:19', NULL);
 
 --
 -- Volcado de datos para la tabla `hitzordua`
@@ -263,19 +283,6 @@ INSERT INTO `kategoria_tratamendu` (`id`, `izena`, `kolorea`, `extra`, `sortze_d
 (10, 'Extras', 'n', 's', '2024-02-08 09:23:10', '2024-02-08 09:23:10', NULL),
 (11, 'Manicura', 'n', 'n', '2024-02-08 09:23:29', '2024-02-08 09:23:29', NULL);
 
---
--- Volcado de datos para la tabla `langilea`
---
-
-INSERT INTO `langilea` (`id`, `izena`, `kodea`, `abizenak`, `sortze_data`, `eguneratze_data`, `ezabatze_data`) VALUES
-(10, 'Julio', '2PCC2', 'Julio', '2024-02-08 09:03:04', '2024-02-08 09:03:04', NULL),
-(11, 'Jesus', '2PCC2', 'de Nazaret', '2024-02-08 09:03:26', '2024-02-08 09:03:26', NULL),
-(12, 'Lola', '2PCC1', 'Lolita', '2024-02-08 09:03:44', '2024-02-08 09:03:44', NULL),
-(13, 'Samuel', '2PCC1', 'de Luca', '2024-02-08 09:04:15', '2024-02-08 09:04:15', NULL),
-(14, 'David', '2PCC1', 'Canovas', '2024-02-08 09:04:25', '2024-02-08 09:04:25', NULL),
-(15, 'Guillermo', '2PCC1', 'Diaz', '2024-02-08 09:04:35', '2024-02-08 09:04:35', NULL),
-(16, 'Pedro', '2PCC2', 'Pascal', '2024-02-08 09:04:58', '2024-02-08 09:04:58', NULL),
-(17, 'Ronald', '2PCC1', 'McDonald', '2024-02-08 09:06:19', '2024-02-08 09:06:19', NULL);
 
 --
 -- Volcado de datos para la tabla `materiala`
@@ -323,14 +330,6 @@ INSERT INTO `produktua` (`id`, `izena`, `deskribapena`, `id_kategoria`, `marka`,
 (18, 'Rizadores y Tenacillas\r\n', 'Riza', 3, 'Schwarzkopf Professional', 10, 5, '2024-02-08 09:18:50', '2024-02-08 09:18:50', NULL),
 (19, 'Tintes para el Cabello\r\n', 'Pinta', 6, 'Olaplex', 10, 5, '2024-02-08 09:18:50', '2024-02-08 09:18:50', NULL),
 (20, 'Decolorantes', 'Decolora', 6, 'Matrix Biolage', 10, 5, '2024-02-08 09:18:50', '2024-02-08 09:18:50', NULL);
-
---
--- Volcado de datos para la tabla `taldea`
---
-
-INSERT INTO `taldea` (`kodea`, `izena`, `sortze_data`, `eguneratze_data`, `ezabatze_data`) VALUES
-('2PCC1', 'Peluqueria de primero', '2024-02-08 09:01:58', '2024-02-08 09:01:58', NULL),
-('2PCC2', 'Peluqueros de segundo', '2024-02-08 09:02:23', '2024-02-08 09:02:23', NULL);
 
 --
 -- Volcado de datos para la tabla `tratamendua`

@@ -10,5 +10,9 @@ class Taldea extends Model
     // use HasFactory;
     protected $table = 'taldea';
     protected $primaryKey = 'kodea';
+    public function getKeyType()
+    {
+        return 'string';
+    }
     public $timestamps = false;
 }

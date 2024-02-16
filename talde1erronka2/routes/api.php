@@ -60,6 +60,7 @@ Route::delete("/taldeak","App\Http\Controllers\\talde_controller@delete");
 
 Route::get("/produktuak","App\Http\Controllers\\produktua_controller@getAll");
 Route::get("/produktuak/{id}","App\Http\Controllers\\produktua_controller@getById");
+Route::get("/produktuakalerta","App\Http\Controllers\\produktua_controller@stock_alerta");
 Route::post("/produktuak","App\Http\Controllers\\produktua_controller@insert");
 Route::put("/produktuak","App\Http\Controllers\\produktua_controller@update");
 Route::put("/produktuak/atera","App\Http\Controllers\\produktua_controller@actualizarStock");

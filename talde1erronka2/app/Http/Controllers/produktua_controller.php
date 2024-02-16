@@ -233,4 +233,22 @@ class produktua_controller extends Controller
             return response()->json(['Error' => $e->getMessage()], 500);
         }
     }
+
+    public function stock_alerta() {
+        $data = Produktua::where(function ($query) {
+            $query->whereNull('ezabatze_data')
+                ->orWhere('ezabatze_data', '0000-00-00 00:00:00');
+        })
+        ->get();
+
+        $filteredData = $data->filter(function ($item) {
+            return $item->stock < $item->stock_alerta;
+        });
+        
+        if($filteredData->isEmpty()){
+            return response()->json(['Error' => "No hay resultados"], 404);
+        } else{
+            return response()->json($filteredData, 200);
+        }
+    }
 }

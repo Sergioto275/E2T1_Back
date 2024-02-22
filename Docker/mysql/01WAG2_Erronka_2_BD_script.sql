@@ -1,6 +1,7 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+SET NAMES 'utf8mb4';
 
 --
 -- Base de datos: '3wag2e2'

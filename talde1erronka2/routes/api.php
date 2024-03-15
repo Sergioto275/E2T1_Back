@@ -162,3 +162,10 @@ Route::get("/devolver","App\Http\Controllers\\devolver_controller@erakutsi");
 Route::get("/devolver/{id}","App\Http\Controllers\\devolver_controller@filterbyid");
 Route::put("/devolver","App\Http\Controllers\\devolver_controller@eguneratu");
 Route::post("/devolver","App\Http\Controllers\\devolver_controller@insertar");
+
+//=========================================================================>
+//== LOGIN ================================================================>
+//=========================================================================>
+
+Route::post("/login","App\Http\Controllers\\login_controller@comprobarDatos");
+Route::post("/crearUsuarios","App\Http\Controllers\\login_controller@crearUsuarios");

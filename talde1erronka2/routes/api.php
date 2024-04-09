@@ -144,6 +144,7 @@ Route::delete("/tratamenduak","App\Http\Controllers\\tratamenduak_controller@del
 //=========================================================================>
 
 Route::post("/ticket_lerro","App\Http\Controllers\\ticket_lerro_controller@insert");
+Route::get("/ticket_lerro","App\Http\Controllers\\ticket_lerro_controller@getAll");
 
 //=========================================================================>
 //== TRATAMENDU KATEGORIAK ================================================>

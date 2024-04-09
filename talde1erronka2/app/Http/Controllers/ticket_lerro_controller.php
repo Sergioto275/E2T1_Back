@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hitzordu;
 use App\Models\Ticket_lerro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -54,6 +55,29 @@ class ticket_lerro_controller extends Controller
             // Ocurrió un error, realizamos un rollback
             DB::rollBack();
             return response("Error al insertar lineas de tratamientos", 500); // Puedes personalizar el código de estado y el mensaje de respuesta según tus necesidades.
+        }
+    }
+
+    public function getAll(){
+        $hitzorduak = Hitzordu::whereIn('id', function ($query) {
+            $query->select('id_hitzordua')
+                ->from(with(new Ticket_lerro)->getTable());
+        })->get();
+        foreach ($hitzorduak as $ticket) {
+            $ticket["ticket"] = Ticket_lerro::select('ticket_lerroa.id', 'ticket_lerroa.prezioa', 'tratamendua.izena')
+                            ->join('tratamendua', 'ticket_lerroa.id_tratamendua', '=', 'tratamendua.id')
+                            ->where('ticket_lerroa.id_hitzordua', $ticket["id"])
+                            ->where(function ($query) {
+                                $query->where('ticket_lerroa.ezabatze_data', '0000-00-00 00:00:00')
+                                    ->orWhereNull('ticket_lerroa.ezabatze_data');
+                            })
+                            ->get();
+        }     
+
+        if(!$hitzorduak){
+            return response()->json(['Error' => "No hay resultados"], 404);
+        } else{
+            return response() -> json($hitzorduak, 200);
         }
     }
 }

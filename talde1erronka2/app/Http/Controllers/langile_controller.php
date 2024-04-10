@@ -121,25 +121,31 @@ class langile_controller extends Controller
      * )
      */
     public function langile_count($fecha){
+        date_default_timezone_set('Europe/Madrid');
+        $hora = Carbon::now()->format("H:i:s"); // Obtener la hora actual en formato correcto
         if($fecha){
             $data = $fecha;
-        }else{
-            date_default_timezone_set('Europe/Madrid');
-            $data =date("Y-m-d");
+        } else {
+            $data = date("Y-m-d");
         }
+    
         $fechaCarbon = Carbon::parse($data);
         $eguna = $fechaCarbon->dayOfWeek;
-        $count = Langile::where('kodea', function ($query) use ($data, $eguna) {
+    
+        $count = Langile::where('kodea', function ($query) use ($data, $eguna, $hora) {
             $query->select('kodea')
                 ->from('ordutegia')
                 ->where('hasiera_data', '<=', $data)
                 ->where('amaiera_data', '>=', $data)
                 ->where('eguna', '=', $eguna)
+                ->where('hasiera_ordua', '<=', $hora)
+                ->where('amaiera_ordua', '>=', $hora)
                 ->where(function ($query) {
                     $query->whereNull('ezabatze_data')
                         ->orWhere('ezabatze_data', '0000-00-00');
                 });
         })->count();
+    
         $count--;
         return $count;
     }

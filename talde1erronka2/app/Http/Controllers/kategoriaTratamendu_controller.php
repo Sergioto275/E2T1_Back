@@ -49,6 +49,8 @@ class kategoriaTratamendu_controller extends Controller
         $datos = $request->all();
         $data = ["izena"=>$datos["izena"],"kolorea"=>$datos["kolorea"],"extra"=>$datos["extra"]];
         KategoriaTratamendu::insert($data);
+        var_dump($data);
+
         return response('', 201);
     }
     /**

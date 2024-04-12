@@ -99,11 +99,12 @@ class txanda_controller extends Controller
         // Si no existe, realiza la inserción
         $data = [
             "mota" => $datos["mota"],
-            "data" => $fechaData,  // Utiliza la fecha formateada
+            "data" => $fechaData,
+            "amaiera_data" => $fechaData,  // Utiliza la fecha formateada
             "id_langilea" => $datos["id_langilea"],
             "sortze_data" => $datos["sortze_data"],
         ];
-
+        // CAMBIOS PARA COMIT
         Txanda::insert($data);
 
         return response('', 201);

@@ -71,6 +71,7 @@ Route::delete("/produktuak","App\Http\Controllers\\produktua_controller@delete")
 //=========================================================================>
 
 Route::get("/materiala","App\Http\Controllers\\materiala_controller@getAll");
+Route::get("/materialAgrup","App\Http\Controllers\\materiala_controller@getAllAgrup");
 Route::get("/materiala/{id}","App\Http\Controllers\\materiala_controller@getById");
 Route::get("/materialalibre","App\Http\Controllers\\materiala_controller@getLibre");
 Route::post("/materiala","App\Http\Controllers\\materiala_controller@insert");

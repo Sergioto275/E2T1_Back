@@ -35,6 +35,20 @@ class materiala_controller extends Controller
             return response()->json($belajar, 200);
         }
     }
+
+    public function getAllAgrup()
+{
+    $belajar = Materiala::select('izena')
+            ->whereNull('ezabatze_data')
+            ->orWhere('ezabatze_data', '0000-00-00 00:00:00')
+            ->groupBy('izena')->get();
+
+    if ($belajar->isEmpty()) {
+        return response()->json(['Error' => "No hay resultados"], 404);
+    } else {
+        return response()->json($belajar, 200);
+    }
+}
     /**
      * @OA\Get(
      *     path="/materiala/{id}",

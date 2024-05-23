@@ -100,9 +100,7 @@ class txanda_controller extends Controller
         $data = [
             "mota" => $datos["mota"],
             "data" => $fechaData,
-            "amaiera_data" => $fechaData,  // Utiliza la fecha formateada
-            "id_langilea" => $datos["id_langilea"],
-            "sortze_data" => $datos["sortze_data"],
+            "id_langilea" => $datos["id_langilea"]
         ];
         // CAMBIOS PARA COMIT
         Txanda::insert($data);

@@ -251,4 +251,27 @@ class produktua_controller extends Controller
             return response()->json($filteredData, 200);
         }
     }
+
+    public function getMugimenduak()
+    {
+        $belajar = Produktu_Mugimendua::join('langilea', 'produktu_mugimendua.id_langilea', '=', 'langilea.id')
+                ->join('produktua', 'produktu_mugimendua.id_produktua', '=', 'produktua.id')
+                ->select(
+                    'produktu_mugimendua.*',
+                    'langilea.kodea',
+                    'langilea.izena as langile_izena',
+                    'langilea.abizenak',
+                    'produktua.izena as produktu_izena'
+                )
+                ->where(function($query) {
+                    $query->where('produktu_mugimendua.ezabatze_data', '0000-00-00 00:00:00')
+                        ->orWhereNull('produktu_mugimendua.ezabatze_data');
+                })
+                ->get();
+        if($belajar->isEmpty()){
+            return response()->json(['Error' => "No hay resultados"], 404);
+        } else{
+            return response()->json($belajar, 200);
+        }
+    }
 }

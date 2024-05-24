@@ -270,4 +270,28 @@ class materiala_controller extends Controller
             ]);
         }
     }
+
+    public function getErreserbak()
+    {
+        $belajar = Materiala_Erabili::join('langilea', 'materiala_erabili.id_langilea', '=', 'langilea.id')
+        ->join('materiala', 'materiala_erabili.id_materiala', '=', 'materiala.id')
+        ->select(
+            'materiala_erabili.*',
+            'langilea.kodea as langilea_kodea',
+            'langilea.izena as langile_izena',
+            'langilea.abizenak',
+            'materiala.etiketa as materiala_kodea',
+            'materiala.izena as produktu_izena'
+        )
+        ->where(function($query) {
+            $query->where('materiala_erabili.ezabatze_data', '0000-00-00 00:00:00')
+                  ->orWhereNull('materiala_erabili.ezabatze_data');
+        })
+        ->get();
+        if($belajar->isEmpty()){
+            return response()->json(['Error' => "No hay resultados"], 404);
+        } else{
+            return response()->json($belajar, 200);
+        }
+    }
 }

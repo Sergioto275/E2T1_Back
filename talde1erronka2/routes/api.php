@@ -59,6 +59,7 @@ Route::delete("/taldeak","App\Http\Controllers\\talde_controller@delete");
 //=========================================================================>
 
 Route::get("/produktuak","App\Http\Controllers\\produktua_controller@getAll");
+Route::get("/mugimenduak","App\Http\Controllers\\produktua_controller@getMugimenduak");
 Route::get("/produktuak/{id}","App\Http\Controllers\\produktua_controller@getById");
 Route::get("/produktuakalerta","App\Http\Controllers\\produktua_controller@stock_alerta");
 Route::post("/produktuak","App\Http\Controllers\\produktua_controller@insert");
@@ -71,6 +72,7 @@ Route::delete("/produktuak","App\Http\Controllers\\produktua_controller@delete")
 //=========================================================================>
 
 Route::get("/materiala","App\Http\Controllers\\materiala_controller@getAll");
+Route::get("/erreserbak","App\Http\Controllers\\materiala_controller@getErreserbak");
 Route::get("/materialAgrup","App\Http\Controllers\\materiala_controller@getAllAgrup");
 Route::get("/materiala/{id}","App\Http\Controllers\\materiala_controller@getById");
 Route::get("/materialalibre","App\Http\Controllers\\materiala_controller@getLibre");
